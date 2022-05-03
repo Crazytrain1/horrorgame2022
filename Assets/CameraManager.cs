@@ -20,16 +20,11 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Camera.current.tag == "Moving")
+        if (Camera.current.tag == "Moving")
         {
             Camera.current.transform.LookAt(PlayerPosition);
         }
     }
   
-    public void CameraChange()
-    {
-        Camera2.SetActive(true);
-        Camera1.SetActive(false);
-
-    }
+   
 }
