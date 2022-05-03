@@ -35,45 +35,36 @@ public class PlayerControl : MonoBehaviour
 
 
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "CameraTrigger")
-        {
-            Trigger = other.gameObject;
-            cameraSwitch = Trigger.GetComponent<cameraswitch>();
-            if (cameraSwitch.cameraExit.activeInHierarchy)
-            {
-                x = 1;
-            }
-            else if (!cameraSwitch.cameraExit.activeInHierarchy)
-            {
-                y = 1;
-            }
-        }
-    }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "CameraTrigger")
+        if (other.gameObject.tag == "CameraTriggerEnter")
         {
             Trigger = other.gameObject;
+            
             cameraSwitch = Trigger.GetComponent<cameraswitch>();
-            if (x==1)
+           
+            if (!cameraSwitch.cameraExit.activeInHierarchy)
             {
-                cameraSwitch.cameraExit.SetActive(false);
-                cameraSwitch.cameraEnter.SetActive(true);
-                Debug.Log("sort");
-                x = 0;
-            }
-            else if(y==1)
-                {
                 cameraSwitch.cameraEnter.SetActive(false);
                 cameraSwitch.cameraExit.SetActive(true);
                 Debug.Log("entre");
-                y = 0;
+
             }
-           
-            Debug.Log("ree");
+        }
+        if (other.gameObject.tag == "CameraTriggerExit")
+        {
+            Trigger = other.gameObject;
+
+            cameraSwitch = Trigger.GetComponent<cameraswitch>();
             
+            if (cameraSwitch.cameraExit.activeInHierarchy)
+            {
+                cameraSwitch.cameraEnter.SetActive(true);
+                cameraSwitch.cameraExit.SetActive(false);
+                Debug.Log("Sort");
+                
+            }
         }
     }
+   
 }
