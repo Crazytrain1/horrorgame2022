@@ -185,17 +185,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4896890849633017910, guid: 2441a17b504f92a4b868443bb4d291a0, type: 3}
   m_PrefabInstance: {fileID: 1832150372}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &178573661 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -1255149632511423713, guid: 2441a17b504f92a4b868443bb4d291a0, type: 3}
-  m_PrefabInstance: {fileID: 1832150372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e292f75d4bd91654d987994f3b3d88a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &343815656
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,11 +406,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 426214625}
-  Item: {fileID: 178573661}
+  Item: {fileID: 0}
   speed: 5
   CameraManager: {fileID: 521771380}
   cameraSwitch: {fileID: 0}
   Trigger: {fileID: 0}
+  realItem: {fileID: 0}
 --- !u!136 &426214621
 CapsuleCollider:
   m_ObjectHideFlags: 0

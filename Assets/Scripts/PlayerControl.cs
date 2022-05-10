@@ -10,7 +10,7 @@ public class PlayerControl : MonoBehaviour
     public GameObject CameraManager;
     [SerializeField] cameraswitch cameraSwitch;
     public GameObject Trigger;
- 
+    public GameObject realItem;
 
     // Update is called once per frame
 
@@ -68,7 +68,8 @@ public class PlayerControl : MonoBehaviour
     {
         if (collision.gameObject.tag == "Item")
         {
-            
+            realItem = collision.gameObject;
+            realItem.TryGetComponent<ItemObject>(out ItemObject Item);
             Debug.Log("marche a moitié");
             Item.OnPickupItem();
             
