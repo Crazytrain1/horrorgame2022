@@ -5,19 +5,16 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     public CharacterController controller;
+    public ItemObject Item;
     public float speed = 5f;
     public GameObject CameraManager;
     [SerializeField] cameraswitch cameraSwitch;
     public GameObject Trigger;
-    int x;
-    int y;
+ 
 
     // Update is called once per frame
 
-    private void Start()
-    {
-        
-    }
+  
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -65,6 +62,17 @@ public class PlayerControl : MonoBehaviour
                 
             }
         }
+        
     }
-   
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Item")
+        {
+            
+            Debug.Log("marche a moitié");
+            Item.OnPickupItem();
+            
+            
+        }
+    }
 }

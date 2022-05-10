@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24a24c8867b4394c840d56548e94c40, type: 3}
+  m_Name: Inventory item_Powder
+  m_EditorClassIdentifier: 
+  id: InventoryItem_Powder
+  displayName: powder
+  icon: {fileID: 21300000, guid: 4a70f21c18c0f92489bc0fbd985fff3a, type: 3}
+  prefab: {fileID: 4896890849633017914, guid: 2441a17b504f92a4b868443bb4d291a0, type: 3}
