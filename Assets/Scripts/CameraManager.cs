@@ -20,10 +20,7 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Camera.current.tag == "Moving")
-        {
-            Camera.current.transform.LookAt(PlayerPosition);
-        }
+     
     }
   
    
