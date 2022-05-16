@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    public CharacterController controller;
+    
     public ItemObject Item;
-    public float speed = 5f;
+   
     public GameObject CameraManager;
     [SerializeField] cameraswitch cameraSwitch;
     public GameObject Trigger;
@@ -17,15 +17,7 @@ public class PlayerControl : MonoBehaviour
   
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
-        if (direction.magnitude >= 0.01f)
-        {
-
-            controller.Move(direction * speed * Time.deltaTime);
-        }
+     
 
 
         
@@ -66,6 +58,7 @@ public class PlayerControl : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("testfunction");
         if (collision.gameObject.tag == "Item")
         {
             realItem = collision.gameObject;
