@@ -7,18 +7,26 @@ namespace StarterAssets
 {
 	public class StarterAssetsInputs : MonoBehaviour
 	{
+		public ThirdPersonController player;
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
-
+		public bool Interact;
 		[Header("Movement Settings")]
 		public bool analogMovement;
 
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
+
+		
+		public void HandleAllInputs()
+        {
+			HandleInteractionInput();
+        }
+
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		public void OnMove(InputValue value)
@@ -44,7 +52,10 @@ namespace StarterAssets
 			SprintInput(value.isPressed);
 		}
 #endif
-
+		public void OnInteract(InputValue value)
+		{
+			InteractInput(value.isPressed);
+		}
 
 		public void MoveInput(Vector2 newMoveDirection)
 		{
@@ -60,7 +71,10 @@ namespace StarterAssets
 		{
 			jump = newJumpState;
 		}
-
+		public void InteractInput(bool newInteractState)
+        {
+			Interact = newInteractState;
+        }
 		public void SprintInput(bool newSprintState)
 		{
 			sprint = newSprintState;
@@ -75,6 +89,17 @@ namespace StarterAssets
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
+		private void HandleInteractionInput()
+        {
+			if (Interact)
+            {
+				if(!player.canInteract)
+                {
+					Interact = false;
+                }
+            }
+        }
+		
 	}
 	
 }

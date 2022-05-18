@@ -86,7 +86,7 @@ namespace StarterAssets
         private float _rotationVelocity;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
-
+        public bool canInteract;
         // timeout deltatime
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
@@ -99,11 +99,11 @@ namespace StarterAssets
         private int _animIDMotionSpeed;
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-        private PlayerInput _playerInput;
+        public PlayerInput _playerInput;
 #endif
         private Animator _animator;
         private CharacterController _controller;
-        private StarterAssetsInputs _input;
+        public StarterAssetsInputs _input;
         private GameObject _mainCamera;
 
         private const float _threshold = 0.01f;
