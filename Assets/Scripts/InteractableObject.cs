@@ -23,7 +23,17 @@ public class InteractableObject : MonoBehaviour
         {
             interactIcon.SetActive(true);
             interactText.SetActive(true);
-            player.canInteract = true;
+
+            if (player.canInteract == false)
+            {
+                player._input.Interact = false;
+                player.canInteract = false;
+            }
+            else
+            {
+             
+                player.canInteract = true;
+            }
         }
     }
     protected virtual void OnTriggerStay(Collider other)
