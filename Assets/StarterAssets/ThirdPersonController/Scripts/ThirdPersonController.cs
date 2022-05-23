@@ -40,6 +40,14 @@ namespace StarterAssets
         public float Gravity = -15.0f;
 
         [Space(10)]
+        [Tooltip("Time required before sprinting again")]
+        public float SprintTimeout = 50.0f;
+
+        [Space(10)]
+        [Tooltip("Time required before sprinting again")]
+        public float SprintDuration = 0.0f;
+
+        [Space(10)]
         [Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
         public float JumpTimeout = 0.50f;
 
@@ -81,6 +89,7 @@ namespace StarterAssets
 
         // player
         private float _speed;
+         private float targetSpeed;
         private float _animationBlend;
         private float _targetRotation = 0.0f;
         private float _rotationVelocity;
@@ -90,7 +99,8 @@ namespace StarterAssets
         // timeout deltatime
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
-
+        private float _sprintTimeoutDelta;
+        private float _sprintDuration;
         // animation IDs
         private int _animIDSpeed;
         private int _animIDGrounded;
@@ -150,6 +160,8 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+            
+            _sprintDuration = SprintDuration;
         }
 
         private void Update()
@@ -213,9 +225,35 @@ namespace StarterAssets
 
         private void Move()
         {
+            
             // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            if ( _sprintDuration >= 5.0f)
+            {
+                _sprintTimeoutDelta = SprintTimeout;
+                _sprintTimeoutDelta -= Time.deltaTime;
+                _sprintDuration = 0.0f;
+                _input.sprint = false;
+            }
+            if (_input.sprint && _sprintTimeoutDelta<=0)
+            {
+                targetSpeed = SprintSpeed;
+                _sprintDuration += Time.deltaTime;
+                
+            }
+            else 
+            { 
+                targetSpeed = MoveSpeed;
+                if (_sprintDuration >= 0)
+                {
+                    _sprintDuration -= Time.deltaTime;
+                }
+                if (_sprintTimeoutDelta > 0)
+                { 
 
+                    _sprintTimeoutDelta -= Time.deltaTime; 
+                }
+            }
+            
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
             // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude

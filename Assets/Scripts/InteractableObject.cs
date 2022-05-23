@@ -11,7 +11,8 @@ public class InteractableObject : MonoBehaviour
    [SerializeField] protected GameObject interactIcon;
    [SerializeField] protected GameObject interactText;
     protected Collider interactableCollider;
-
+    [SerializeField] protected int objectType = 1;
+    public GameObject realItem;
     protected virtual void OnTriggerEnter(Collider other)
     {
         if(player == null)
@@ -64,6 +65,14 @@ public class InteractableObject : MonoBehaviour
     }
     protected virtual void Interact(ThirdPersonController player)
     {
+        if (objectType == 1)
+        {
+            realItem = this.gameObject;
+            realItem.TryGetComponent<ItemObject>(out ItemObject Item);
+            Item.OnPickupItem();
+            interactIcon.SetActive(false);
+            interactText.SetActive(false);
+        }
         Debug.Log("Interaction");
     }
 }
