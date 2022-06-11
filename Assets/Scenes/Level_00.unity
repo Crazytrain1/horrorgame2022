@@ -705,7 +705,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.94074076, y: 1}
+    m_SensorSize: {x: 0.50987655, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2845,7 +2845,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.94074076, y: 1}
+    m_SensorSize: {x: 0.50987655, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3464,7 +3464,6 @@ GameObject:
   - component: {fileID: 1109611468}
   - component: {fileID: 1109611467}
   - component: {fileID: 1109611466}
-  - component: {fileID: 1109611470}
   m_Layer: 0
   m_Name: Sol
   m_TagString: Untagged
@@ -3550,14 +3549,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!81 &1109611470
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109611465}
-  m_Enabled: 1
 --- !u!1 &1110374480 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
@@ -3598,6 +3589,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
   m_PrefabInstance: {fileID: 563828357}
   m_PrefabAsset: {fileID: 0}
+--- !u!81 &1110374490
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110374480}
+  m_Enabled: 1
 --- !u!1 &1178377366
 GameObject:
   m_ObjectHideFlags: 0
