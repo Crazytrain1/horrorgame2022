@@ -11,6 +11,7 @@ namespace StarterAssets
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
+		public bool rotate;
 		public bool jump;
 		public bool sprint;
 		public bool Interact;
@@ -33,6 +34,11 @@ namespace StarterAssets
 		{
 			MoveInput(value.Get<Vector2>());
 		}
+
+		public void OnRotate(InputValue value)
+        {
+			RotateInput(value.isPressed);
+        }
 
 		public void OnLook(InputValue value)
 		{
@@ -61,6 +67,10 @@ namespace StarterAssets
 		{
 			move = newMoveDirection;
 		} 
+		public void RotateInput(bool newRotateDirection)
+        {
+			rotate = newRotateDirection;
+        }
 
 		public void LookInput(Vector2 newLookDirection)
 		{
@@ -82,7 +92,7 @@ namespace StarterAssets
 
 		private void OnApplicationFocus(bool hasFocus)
 		{
-			SetCursorState(cursorLocked);
+			//SetCursorState(cursorLocked);
 		}
 
 		private void SetCursorState(bool newState)

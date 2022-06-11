@@ -70,6 +70,9 @@ namespace StarterAssets
         [Header("Cinemachine")]
         [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
         public GameObject CinemachineCameraTarget;
+        [Header("Rotation Inspection")]
+        [Tooltip("Object to modify rotation")]
+        public GameObject Item;
 
         [Tooltip("How far in degrees can you move the camera up")]
         public float TopClamp = 70.0f;
@@ -115,7 +118,7 @@ namespace StarterAssets
         private CharacterController _controller;
         public StarterAssetsInputs _input;
         private GameObject _mainCamera;
-
+        private Vector3 posLastFrame;
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
@@ -171,6 +174,10 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+            if (_playerInput.currentActionMap.name == "Item Viewing")
+            { 
+                Rotate();
+            }
         }
 
         private void LateUpdate()
@@ -221,6 +228,23 @@ namespace StarterAssets
             // Cinemachine will follow this target
             CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
                 _cinemachineTargetYaw, 0.0f);
+        }
+
+        private void Rotate()
+        {
+            
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                posLastFrame = Mouse.current.position.ReadValue();
+            }
+            if (Mouse.current.leftButton.isPressed)
+            {
+                var delta = (Vector3)Mouse.current.position.ReadValue() - posLastFrame;
+                posLastFrame = Mouse.current.position.ReadValue();
+
+                var axis = Quaternion.AngleAxis(-90f, new Vector3(0,0,1)) * delta;
+                Item.transform.rotation = Quaternion.AngleAxis(delta.magnitude * 0.1f, axis) * Item.transform.rotation;
+            }
         }
 
         private void Move()

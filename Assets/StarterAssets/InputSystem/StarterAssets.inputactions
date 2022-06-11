@@ -240,6 +240,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Item Viewing",
+            "id": "3142a717-381d-4da7-a884-3c0707c7c368",
+            "actions": [
+                {
+                    "name": "Rotate",
+                    "type": "Button",
+                    "id": "50d8548f-d9ac-4129-911e-6fb3fffe3852",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "831f1d67-7f1b-478d-987b-d472b69e484f",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

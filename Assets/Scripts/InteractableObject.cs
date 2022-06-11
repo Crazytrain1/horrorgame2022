@@ -6,10 +6,14 @@ using UnityEngine;
 public class InteractableObject : MonoBehaviour
 {
     // base class for interactable objects
-    
-    protected ThirdPersonController player;
-   [SerializeField] protected GameObject interactIcon;
-   [SerializeField] protected GameObject interactText;
+
+    public ThirdPersonController player;
+    [SerializeField] protected GameObject interactIcon;
+    [SerializeField] protected GameObject interactText;
+    [SerializeField] protected GameObject BackgroundItem;
+    [SerializeField] protected GameObject LeaveButton;
+    [SerializeField] protected GameObject Object3D;
+    [SerializeField] protected GameObject InteractCamera;
     protected Collider interactableCollider;
     [SerializeField] protected int objectType = 1;
     public GameObject realItem;
@@ -73,6 +77,30 @@ public class InteractableObject : MonoBehaviour
             interactIcon.SetActive(false);
             interactText.SetActive(false);
         }
+
+        if (objectType == 2)
+        {
+
+            BackgroundItem.SetActive(true);
+            interactIcon.SetActive(false);
+            interactText.SetActive(false);
+            InteractCamera.SetActive(true);
+            LeaveButton.SetActive(true);
+            player._playerInput.actions.Disable();
+            player._playerInput.SwitchCurrentActionMap("Item Viewing");
+            Object3D = this.gameObject;
+          
+
+        }
+
+
         Debug.Log("Interaction");
+    }
+    public void InteractLeave()
+    {
+        BackgroundItem.SetActive(false);
+        InteractCamera.SetActive(false);
+        LeaveButton.SetActive(false);
+        player._playerInput.actions.Enable();
     }
 }
