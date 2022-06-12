@@ -102,5 +102,6 @@ public class InteractableObject : MonoBehaviour
         InteractCamera.SetActive(false);
         LeaveButton.SetActive(false);
         player._playerInput.actions.Enable();
+        player._playerInput.SwitchCurrentActionMap("Player");
     }
 }
