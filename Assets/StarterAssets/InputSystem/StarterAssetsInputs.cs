@@ -15,8 +15,11 @@ namespace StarterAssets
 		public bool jump;
 		public bool sprint;
 		public bool Interact;
+		public bool Flashlight;
+		public GameObject light;
 		[Header("Movement Settings")]
 		public bool analogMovement;
+		
 
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
@@ -63,6 +66,20 @@ namespace StarterAssets
 			InteractInput(value.isPressed);
 		}
 
+		public void OnFlashlight(InputValue value)
+		{
+			if (Flashlight == true)
+			{
+				FlashlightInput(!value.isPressed);
+				light.SetActive(false);
+
+			}
+			else
+			{
+				FlashlightInput(value.isPressed);
+				light.SetActive(true);
+			}
+		}
 		public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
@@ -85,6 +102,10 @@ namespace StarterAssets
         {
 			Interact = newInteractState;
         }
+		public void FlashlightInput(bool newFlashlightState)
+		{
+			Flashlight = newFlashlightState;
+		}
 		public void SprintInput(bool newSprintState)
 		{
 			sprint = newSprintState;
