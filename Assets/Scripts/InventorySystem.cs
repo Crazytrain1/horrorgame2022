@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,19 +18,9 @@ public class InventorySystem : MonoBehaviour
 
     }
 
-    public event Action onInventoryChangedEvent;
-    public void InventoryChangedEvent()
-    {
-        if (onInventoryChangedEvent != null)
-        {
-            onInventoryChangedEvent();
-        }
-    }
-
     public void Add(InventoryItemData referenceData)
     {
-        
-        if ( m_itemDictionary.TryGetValue(referenceData, out InventoryItem value))
+        if( m_itemDictionary.TryGetValue(referenceData, out InventoryItem value))
         {
             value.AddToStack();
         }
@@ -41,7 +30,7 @@ public class InventorySystem : MonoBehaviour
             inventory.Add(newItem);
             m_itemDictionary.Add(referenceData, newItem);
         }
-        current.InventoryChangedEvent();
+
     }
 
 
@@ -56,7 +45,6 @@ public class InventorySystem : MonoBehaviour
                 m_itemDictionary.Remove(referenceData);
             }
         }
-        current.InventoryChangedEvent();
     }
 
     public InventoryItem Get(InventoryItemData referenceData)
@@ -68,7 +56,7 @@ public class InventorySystem : MonoBehaviour
         return null;
     }
 
-    [Serializable]
+    [System.Serializable]
     public class InventoryItem
     {
         public InventoryItemData data;
