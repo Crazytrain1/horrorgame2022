@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MenuPrincipal : MonoBehaviour
 {
-   public void OnQuitButton()
+    [SerializeField] private GameObject options;
+    public void OnQuitButton()
     {
         Application.Quit();
         Debug.Log("quitting the game, u pussy?");
     }
     public void OnOptionsButton()
     {
-
+        options.SetActive(true);
     }
     public void OnStartButton()
     {
