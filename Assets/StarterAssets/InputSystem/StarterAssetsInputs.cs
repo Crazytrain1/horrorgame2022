@@ -11,6 +11,7 @@ namespace StarterAssets
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
+		public Vector2 crawl;
 		public bool rotate;
 		public bool jump;
 		public bool sprint;
@@ -36,6 +37,11 @@ namespace StarterAssets
 		public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
+		}
+
+		public void OnCrawling(InputValue value)
+		{
+			CrawlingInput(value.Get<Vector2>());
 		}
 
 		public void OnRotate(InputValue value)
@@ -84,6 +90,12 @@ namespace StarterAssets
 		{
 			move = newMoveDirection;
 		} 
+
+		public void CrawlingInput(Vector2 newCrawlingDirection)
+        {
+			crawl = newCrawlingDirection;
+			Debug.Log("OnCrawling working");
+        }
 		public void RotateInput(bool newRotateDirection)
         {
 			rotate = newRotateDirection;

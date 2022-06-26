@@ -169,15 +169,20 @@ namespace StarterAssets
 
         private void Update()
         {
-            _hasAnimator = TryGetComponent(out _animator);
-
-            JumpAndGravity();
-            GroundedCheck();
-            Move();
+            
+            if (_playerInput.currentActionMap.name == "Player")
+            {
+                _hasAnimator = TryGetComponent(out _animator);
+                
+                JumpAndGravity();
+                GroundedCheck();
+                Move();
+            }
             if (_playerInput.currentActionMap.name == "Item Viewing")
             { 
                 Rotate();
             }
+          
         }
 
         private void LateUpdate()
@@ -247,7 +252,7 @@ namespace StarterAssets
             }
         }
 
-        private void Move()
+        public void Move()
         {
             
             // set target speed based on move speed, sprint speed and if sprint is pressed
@@ -450,5 +455,7 @@ namespace StarterAssets
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
         }
+   
     }
+
 }

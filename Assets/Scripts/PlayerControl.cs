@@ -54,7 +54,15 @@ public class PlayerControl : MonoBehaviour
                 
             }
         }
-        
+        if (other.gameObject.tag == "Crawl")
+        {
+            Trigger = other.gameObject;
+
+
+
+            Debug.Log("sort");
+        }
+
     }
     private void OnCollisionEnter(Collision collision)
     {
