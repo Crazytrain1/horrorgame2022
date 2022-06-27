@@ -57,7 +57,7 @@ public class PlayerControl : MonoBehaviour
         if (other.gameObject.tag == "Crawl")
         {
             Trigger = other.gameObject;
-
+            InteractableObject.crouching = false;
 
 
             Debug.Log("sort");

@@ -18,8 +18,9 @@ public class InteractableObject : MonoBehaviour
     [SerializeField] protected GameObject PlayerCharacter;
     [SerializeField] protected Collider PlayerCollider;
     [SerializeField] protected Collider interactableCollider;
+    [SerializeField] protected Vector3 PlayerPosition;
     [SerializeField] protected int objectType = 1;
-    [SerializeField] protected bool crouching;
+    [SerializeField] public static bool crouching;
     public GameObject realItem;
     private float originalSize;
     protected virtual void OnTriggerEnter(Collider other)
@@ -114,7 +115,7 @@ public class InteractableObject : MonoBehaviour
             StartCoroutine("SmallSpace");
             Debug.Log("test 3");
             crouching = true;
-
+            
         }
 
 
@@ -127,19 +128,28 @@ public class InteractableObject : MonoBehaviour
         LeaveButton.SetActive(false);
         player._playerInput.actions.Enable();
         player._playerInput.SwitchCurrentActionMap("Player");
+
     }
     IEnumerator SmallSpace()
     {
         while (crouching == true)
         {
-            
+            PlayerPosition = PlayerCharacter.transform.position;
             if (Keyboard.current.dKey.isPressed)
 
             {
-                Debug.Log("droite");
-                PlayerCharacter.transform.position += transform.right;  
-                yield return  new WaitForSeconds(1);
+                float timeElapsed = 0f;
+                float totalLerpTime = 2f;
 
+                while (timeElapsed <= totalLerpTime)
+                {
+                    
+                    
+                    PlayerCharacter.transform.position = Vector3.Lerp(PlayerPosition, PlayerPosition + new Vector3(1, 0, 0),(timeElapsed/totalLerpTime));
+                    timeElapsed += Time.deltaTime;
+                    yield return new WaitForEndOfFrame();
+                }
+                yield return new WaitForSeconds((float)0.25);
             }
             else if  (Keyboard.current.aKey.isPressed)
 
@@ -148,10 +158,20 @@ public class InteractableObject : MonoBehaviour
                 PlayerCharacter.transform.position += -transform.right  ;
                 yield return new WaitForSeconds(1);
             }
+
+            yield return null; 
             
-            yield return null;
         }
         Debug.Log("pas dans la boucle");
-        yield return null;
+        LeavingCrawl();
+        yield  break;
+    }
+
+    public void LeavingCrawl()
+    {
+        PlayerCharacter.transform.position = Vector3.Lerp(PlayerPosition, PlayerPosition + new Vector3(10, 0, 0), (1));
+
+        player._playerInput.actions.Enable();
+        player._playerInput.SwitchCurrentActionMap("Player");
     }
 }
