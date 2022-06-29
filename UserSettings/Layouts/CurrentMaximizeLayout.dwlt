@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 32114
+  controlID: 2923
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -250,9 +250,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 4.302916, y: 1.6032835, z: 11.130293}
+    m_Target: {x: 649.6849, y: 39.517807, z: -210.45912}
     speed: 2
-    m_Value: {x: 4.302916, y: 1.6032835, z: 11.130293}
+    m_Value: {x: 649.6849, y: 39.517807, z: -210.45912}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -299,13 +299,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.009463137, y: 0.95883477, z: -0.049519427, w: -0.28509223}
+    m_Target: {x: 0.11848992, y: -0.6975266, z: 0.116739504, w: 0.69965863}
     speed: 2
-    m_Value: {x: -0.009373938, y: 0.9577381, z: -0.049454913, w: -0.28320324}
+    m_Value: {x: 0.118443996, y: -0.69517976, z: 0.11634465, w: 0.69939977}
   m_Size:
-    m_Target: 0.88683635
+    m_Target: 682.18854
     speed: 2
-    m_Value: 0.84864724
+    m_Value: 682.1885
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 32115
+  controlID: 2924
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 32116
+  controlID: 2925
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -436,10 +436,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 32}
-      m_SelectedIDs: 60650000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 4ef9fdff16fbfdff146bfeffb66dfeff0678feff227cfeff9a9cfeff8496ffff069bffffa2f3ffff1afbffff
+      scrollPos: {x: 0, y: 1255.6}
+      m_SelectedIDs: 9c5e0000
+      m_LastClickedID: 24220
+      m_ExpandedIDs: 4ef9fdff16fbfdff146bfeffb66dfeff0678feff227cfeff9a9cfeff8496ffff069bffffa2f3ffff1afbffffb2600000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -650,22 +650,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Props
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Props
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Samuel Girard\Documents\GitHub\horrorgame2022
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 48.599976}
-    m_SelectedIDs: f0640000
-    m_LastClickedID: 25840
-    m_ExpandedIDs: 00000000ce630000d0630000d2630000d4630000d6630000d8630000da63000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 74650000
+    m_LastClickedID: 25972
+    m_ExpandedIDs: 00000000626500006465000066650000686500006a6500006c6500006e65000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -693,7 +693,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ce630000d0630000d2630000d4630000d6630000d8630000da63000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000626500006465000066650000686500006a6500006c6500006e65000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -718,8 +718,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 60650000
-    m_LastClickedInstanceID: 25952
+    m_SelectedInstanceIDs: 9c5e0000
+    m_LastClickedInstanceID: 24220
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300004ca20000b4a40000
     m_RenameOverlay:
