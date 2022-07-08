@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    public GameObject  Camera1;
-    public GameObject Camera2;
-    public GameObject Camera3;
-    public GameObject Camera4;
-    public GameObject Camera5;
+    public GameObject  CameraBureau;
+    public GameObject CameraHallway;
+    public GameObject CameraWaitingRoom;
+    public GameObject CameraBathroom;
+    public GameObject CameraWorkstation;
     
     public GameObject Player;
     public Transform PlayerPosition;
@@ -16,11 +16,11 @@ public class CameraManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Camera1.SetActive(true);
-        Camera2.SetActive(false);
-        Camera3.SetActive(false);
-        Camera4.SetActive(false);
-        Camera5.SetActive(false);
+        CameraBureau.SetActive(true);
+        CameraHallway.SetActive(false);
+        CameraWaitingRoom.SetActive(false);
+        CameraBathroom.SetActive(false);
+        CameraWorkstation.SetActive(false);
         
 
     }

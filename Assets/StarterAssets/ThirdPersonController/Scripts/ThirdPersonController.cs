@@ -41,7 +41,7 @@ namespace StarterAssets
 
         [Space(10)]
         [Tooltip("Time required before sprinting again")]
-        public float SprintTimeout = 50.0f;
+        public float SprintTimeout = 5.0f;
 
         [Space(10)]
         [Tooltip("Time required before sprinting again")]
