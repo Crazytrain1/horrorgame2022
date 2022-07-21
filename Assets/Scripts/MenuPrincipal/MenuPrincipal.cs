@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MenuPrincipal : MonoBehaviour
 {
+
+    [SerializeField] enum Level { MainMenu, Level0, Level1, Level2, Level3, Level4 };
+    [SerializeField] Level NextLevel;
     [SerializeField] private GameObject options;
     public void OnQuitButton()
     {
@@ -16,6 +19,6 @@ public class MenuPrincipal : MonoBehaviour
     }
     public void OnStartButton()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene((int)NextLevel);
     }
 }

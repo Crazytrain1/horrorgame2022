@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject parent;
     [SerializeField] Transform parentT;
     [SerializeField] enum Level {MainMenu,Level0,Level1,Level2,Level3, Level4};
-    [SerializeField] Level CurrentLevel;
+    [SerializeField] Level NextLevel;
     
 
     void Start()
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         
         parent = Instantiate(Player as GameObject);
         
-        Player.transform.position = Spawner.transform.position;
+        parent.transform.position = Spawner.transform.position;
         LookAt.transform.position = parent.transform.position;
         //
         parentT = parent.transform;
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     {
         if(other.tag =="Player")
         {
-            SceneManager.LoadScene((int)CurrentLevel);
+            SceneManager.LoadScene((int)NextLevel);
         }
 
     }
