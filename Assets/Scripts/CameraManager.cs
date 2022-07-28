@@ -16,6 +16,8 @@ public class CameraManager : MonoBehaviour
     public GameObject CameraHallwayTransition4;
     public GameObject CameraStaircase1;
     public GameObject CameraStaircase2;
+    public GameObject CameraBureau2;
+    public GameObject CameraHallwayTop;
 
     [Header("Camera Level 1")]
     public GameObject CameraStair;
@@ -45,7 +47,7 @@ public class CameraManager : MonoBehaviour
     {
         if (NextLevel == Level.Level0)
         {
-            CameraBureau.SetActive(true);
+            CameraBureau.SetActive(false);
             CameraHallway.SetActive(false);
             CameraWaitingRoom.SetActive(false);
             CameraBathroom.SetActive(false);
@@ -56,6 +58,8 @@ public class CameraManager : MonoBehaviour
             CameraHallwayTransition4.SetActive(false);
             CameraStaircase1.SetActive(false);
             CameraStaircase2.SetActive(false);
+            CameraHallwayTop.SetActive(false);
+            CameraBureau2.SetActive(true);
         }
         else if (NextLevel == Level.Level1)
         {
