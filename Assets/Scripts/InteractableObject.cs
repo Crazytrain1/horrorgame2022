@@ -117,6 +117,12 @@ public class InteractableObject : MonoBehaviour
             crouching = true;
             
         }
+        if (objectType == 4)
+        {
+
+            Debug.Log("souffrance et desespoir");
+
+        }
 
 
         Debug.Log("Interaction");
