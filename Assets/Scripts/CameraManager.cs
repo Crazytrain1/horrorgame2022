@@ -6,7 +6,7 @@ public class CameraManager : MonoBehaviour
 {
     [Header("Camera Level 0")]
     public GameObject  CameraBureau;
-    public GameObject CameraHallway;
+
     public GameObject CameraWaitingRoom;
     public GameObject CameraBathroom;
     public GameObject CameraWorkstation;
@@ -48,8 +48,7 @@ public class CameraManager : MonoBehaviour
     {
         if (NextLevel == Level.Level0)
         {
-            CameraBureau.SetActive(false);
-            CameraHallway.SetActive(false);
+            CameraBureau.SetActive(false);          
             CameraWaitingRoom.SetActive(false);
             CameraBathroom.SetActive(false);
             CameraWorkstation.SetActive(false);
