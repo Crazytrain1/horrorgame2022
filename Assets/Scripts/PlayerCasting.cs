@@ -6,8 +6,8 @@ using UnityEngine;
 public class PlayerCasting : MonoBehaviour
 {
 
-    [SerializeField] float ToTarget;
-    
+    public static float DistanceFromTarget;
+    public float ToTarget;
   
     void Update()
     {
@@ -15,14 +15,15 @@ public class PlayerCasting : MonoBehaviour
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out Hit, Mathf.Infinity))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * Hit.distance, Color.yellow);
-            Debug.Log("fuck you criss de chienne");
+            
             ToTarget = Hit.distance;
+            DistanceFromTarget = ToTarget;
            
         }
         else
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            Debug.Log("criss de caliss pourquoi tas rien pogné");
+           
         }
 
     }
