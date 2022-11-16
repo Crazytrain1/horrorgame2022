@@ -62,7 +62,8 @@ public class DoorControll : MonoBehaviour
             doorframe.GetComponent<Animation>().Play("DoorOpen");
             ActionDisplay.SetActive(false);
             ActionText.SetActive(false);
-            doorOpen = true;
+            StartCoroutine(DelayOpen());
+            
 
         }
         else if (Input.GetKeyDown("e") && TheDistance <= 3 && doorOpen)
@@ -70,11 +71,21 @@ public class DoorControll : MonoBehaviour
             Debug.Log("closing door");
             doorframe.GetComponent<Animation>().Play("DoorClose");
             ActionDisplay.SetActive(false);
-            ActionText.SetActive(false);
-            doorOpen = false;
-
+            ActionText.SetActive(false);            
+            StartCoroutine(DelayClose());
         }
 
+    }
+
+     IEnumerator DelayOpen()
+    {
+        yield return new WaitForSeconds(1f);
+        doorOpen = true;
+    }
+     IEnumerator DelayClose()
+    {
+        yield return new WaitForSeconds(1f);
+        doorOpen = false;
     }
 
     void OnMouseExit()
