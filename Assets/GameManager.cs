@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject Spawner;
     [SerializeField] GameObject Player;
-    [SerializeField] GameObject LookAt;
     [SerializeField] GameObject parent;
     [SerializeField] Transform parentT;
     [SerializeField] enum Level {MainMenu,Level0,Level1,Level2,Level3, Level4};
@@ -22,10 +21,10 @@ public class GameManager : MonoBehaviour
         parent = Instantiate(Player as GameObject);
         
         parent.transform.position = Spawner.transform.position;
-        LookAt.transform.position = parent.transform.position;
-        //
+
+        
         parentT = parent.transform;
-        LookAt.transform.SetParent(parentT, true);
+      
         
         
     }
