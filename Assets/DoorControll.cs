@@ -6,16 +6,18 @@ using UnityEngine;
 public class DoorControll : MonoBehaviour
 {
     [SerializeField] float TheDistance;
-    [SerializeField] GameObject doorframe;
-    [SerializeField] GameObject ActionDisplay;
-    [SerializeField] GameObject ActionText;
+    [SerializeField] GameObject doorframe;  
+    [SerializeField] GameObject InteractDisplayObject;
     [SerializeField] bool doorOpen;
+    private bool Interacting;
     public Transform target;
-    
+    private InteractDisplay _InteractDisplay;
     // Start is called before the first frame update
     void Start()
     {
-       
+        _InteractDisplay = InteractDisplayObject.GetComponent<InteractDisplay>();
+        _InteractDisplay.UpdateInteractDisplay();
+
     }
 
     // Update is called once per frame
@@ -27,34 +29,31 @@ public class DoorControll : MonoBehaviour
 
     void OnMouseOver()
     {
-        if(TheDistance <=3  )
+        if(TheDistance <=3 != Interacting )
         {
+
+            _InteractDisplay.SetInteractDisplay(true, null, "Press to Interact");
             
-            ActionDisplay.SetActive(true);
-            ActionText.SetActive(true); 
+            
         }
         else
         {
-            ActionDisplay.SetActive(false);
-            ActionText.SetActive(false);
+            _InteractDisplay.UpdateInteractDisplay();
 
         }
         if(Input.GetKeyDown("e")&&TheDistance <=3&& !doorOpen)
         {
-            Debug.Log("opening door");
+            
             doorframe.GetComponent<Animation>().Play("DoorOpen");
-            ActionDisplay.SetActive(false);
-            ActionText.SetActive(false);
+            _InteractDisplay.UpdateInteractDisplay();
             StartCoroutine(DelayOpen());
             
 
         }
         else if (Input.GetKeyDown("e") && TheDistance <= 3 && doorOpen)
         {
-            Debug.Log("closing door");
             doorframe.GetComponent<Animation>().Play("DoorClose");
-            ActionDisplay.SetActive(false);
-            ActionText.SetActive(false);            
+            _InteractDisplay.UpdateInteractDisplay();
             StartCoroutine(DelayClose());
         }
 
@@ -62,19 +61,22 @@ public class DoorControll : MonoBehaviour
 
      IEnumerator DelayOpen()
     {
+        Interacting= true;
         yield return new WaitForSeconds(1f);
         doorOpen = true;
+        Interacting= false;
     }
      IEnumerator DelayClose()
     {
+        Interacting = true;
         yield return new WaitForSeconds(1f);
         doorOpen = false;
+        Interacting= false;
     }
 
     void OnMouseExit()
     {
-        ActionText.SetActive(false);
-        ActionDisplay.SetActive(false);
+        _InteractDisplay.UpdateInteractDisplay();
     }
     
     
