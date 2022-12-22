@@ -12,10 +12,12 @@ public class InteractDisplay : MonoBehaviour
     {
         if (Key)
         {
+
             ActionText.SetActive(true);
         }
         if(Message != null) 
         {
+            
             Text.SetActive(true);
         }
         if(InteractMessage != null)
@@ -30,6 +32,7 @@ public class InteractDisplay : MonoBehaviour
         ActionText.SetActive(false);
         Text.SetActive(false);
         ActionDisplay.SetActive(false);
+        
     }
 
 }

@@ -8,10 +8,12 @@ public class DoorControll : MonoBehaviour
     [SerializeField] float TheDistance;
     [SerializeField] GameObject doorframe;  
     [SerializeField] GameObject InteractDisplayObject;
-    [SerializeField] bool doorOpen;
+    [SerializeField] bool _doorlocked;
+    private bool _doorOpen;
     private bool Interacting;
-    public Transform target;
+
     private InteractDisplay _InteractDisplay;
+    private int _DistanceMax = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +31,7 @@ public class DoorControll : MonoBehaviour
 
     void OnMouseOver()
     {
-        if(TheDistance <=3 != Interacting )
+        if(TheDistance <=_DistanceMax && !Interacting )
         {
 
             _InteractDisplay.SetInteractDisplay(true, null, "Press to Interact");
@@ -41,16 +43,21 @@ public class DoorControll : MonoBehaviour
             _InteractDisplay.UpdateInteractDisplay();
 
         }
-        if(Input.GetKeyDown("e")&&TheDistance <=3&& !doorOpen)
+        if(Input.GetKeyDown("e")&&TheDistance <= _DistanceMax && !_doorOpen)
         {
-            
-            doorframe.GetComponent<Animation>().Play("DoorOpen");
-            _InteractDisplay.UpdateInteractDisplay();
-            StartCoroutine(DelayOpen());
-            
+            if (!_doorlocked)
+            {
+                doorframe.GetComponent<Animation>().Play("DoorOpen");
+                _InteractDisplay.UpdateInteractDisplay();
+                StartCoroutine(DelayOpen());
+            }
+            else
+            {
+                //add jamming sound
+            }
 
         }
-        else if (Input.GetKeyDown("e") && TheDistance <= 3 && doorOpen)
+        else if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax && _doorOpen)
         {
             doorframe.GetComponent<Animation>().Play("DoorClose");
             _InteractDisplay.UpdateInteractDisplay();
@@ -58,19 +65,23 @@ public class DoorControll : MonoBehaviour
         }
 
     }
+    public void SetLock(bool locked)
+    {
+        _doorlocked= locked;
+    }
 
      IEnumerator DelayOpen()
     {
         Interacting= true;
         yield return new WaitForSeconds(1f);
-        doorOpen = true;
+        _doorOpen = true;
         Interacting= false;
     }
      IEnumerator DelayClose()
     {
         Interacting = true;
         yield return new WaitForSeconds(1f);
-        doorOpen = false;
+        _doorOpen = false;
         Interacting= false;
     }
 
