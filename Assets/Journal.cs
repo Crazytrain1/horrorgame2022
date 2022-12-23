@@ -39,14 +39,14 @@ public class Journal : MonoBehaviour
             if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax && !open)
             {
             GameManager.Instance.UpdateGameState(GameManager.GameState.interacting);
-                Debug.Log("reading");
+            
             journal.SetActive(true);
             open = true;
             }
             else if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax && open)
             {
-                Debug.Log("closing");
-                journal.SetActive(false);
+            GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+            journal.SetActive(false);
                 open = false;
             }
     }

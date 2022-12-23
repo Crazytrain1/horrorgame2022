@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float groundDistance = 0.4f;
     [SerializeField] LayerMask groundMask;
     [SerializeField] bool isGrounded;
+    private bool canMove = true;
     Vector3 velocity;
     private void Awake()
     {
@@ -24,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void GameManager_StateChanged(GameManager.GameState State)
     {
-        Debug.Log(State.ToString());
+        canMove = State == GameManager.GameState.Playing;
     }
 
     void Update()
@@ -35,18 +36,19 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = -2f;
         }
-        
-        
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * x + transform.forward * z;
+        if (canMove)
+        {
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
 
-        controller.Move(move * speed * Time.deltaTime);
-        velocity.y += gravity * Time.deltaTime;
+            Vector3 move = transform.right * x + transform.forward * z;
 
-        controller.Move(velocity * Time.deltaTime);
-        
+            controller.Move(move * speed * Time.deltaTime);
+            velocity.y += gravity * Time.deltaTime;
+
+            controller.Move(velocity * Time.deltaTime);
+        }
     }
 
 }

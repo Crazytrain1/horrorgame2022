@@ -24,23 +24,19 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        parent = Instantiate(Player as GameObject);
+
+        parent.transform.position = Spawner.transform.position;
+
+
+        parentT = parent.transform;
     }
 
     void Start()
 
     {
-        UpdateGameState(GameState.Playing);
-
-        
-        parent = Instantiate(Player as GameObject);
-        
-        parent.transform.position = Spawner.transform.position;
-
-        
-        parentT = parent.transform;
-      
-        
-        
+        Debug.Log("gameManagerTest");
+        UpdateGameState(GameState.Playing);    
     }
     public void UpdateGameState(GameState newState)
     {
@@ -60,6 +56,7 @@ public class GameManager : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
+        Debug.Log(State.ToString());
         StateChanged?.Invoke(newState);
     }
     public enum GameState
