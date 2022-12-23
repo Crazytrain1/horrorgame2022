@@ -32,7 +32,7 @@ public class Punch : MonoBehaviour
             if (TheDistance <= _DistanceMax)
             {
 
-                _InteractDisplay.SetInteractDisplay(true, null, "Press to Interact");
+                _InteractDisplay.SetInteractDisplay(true, null, "Clock in");
 
 
             }

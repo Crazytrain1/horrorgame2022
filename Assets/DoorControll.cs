@@ -34,7 +34,7 @@ public class DoorControll : MonoBehaviour
         if(TheDistance <=_DistanceMax && !Interacting )
         {
 
-            _InteractDisplay.SetInteractDisplay(true, null, "Press to Interact");
+            _InteractDisplay.SetInteractDisplay(true, null, "open door");
             
             
         }
@@ -53,7 +53,7 @@ public class DoorControll : MonoBehaviour
             }
             else
             {
-                //add jamming sound
+                _InteractDisplay.SetInteractDisplay(true, "clock in to enter", "open door");
             }
 
         }

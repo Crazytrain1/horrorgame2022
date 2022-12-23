@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class InteractDisplay : MonoBehaviour
@@ -7,6 +8,8 @@ public class InteractDisplay : MonoBehaviour
     [SerializeField] GameObject ActionDisplay;
     [SerializeField] GameObject ActionText;
     [SerializeField] GameObject Text;
+    private TextMeshProUGUI _Text;
+    private TextMeshProUGUI _InteractMessage;
 
     public void SetInteractDisplay(bool Key, string Message, string InteractMessage)
     {
@@ -19,10 +22,15 @@ public class InteractDisplay : MonoBehaviour
         {
             
             Text.SetActive(true);
+            _Text  = Text.GetComponent<TextMeshProUGUI>();
+            _Text.text = Message;
         }
         if(InteractMessage != null)
         {
             ActionDisplay.SetActive(true);
+            _InteractMessage = ActionDisplay.GetComponent<TextMeshProUGUI>();
+            _InteractMessage.text = InteractMessage;    
+
         }
 
     }
