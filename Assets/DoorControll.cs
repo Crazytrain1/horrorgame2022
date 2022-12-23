@@ -16,7 +16,7 @@ public class DoorControll : MonoBehaviour
 
     private InteractDisplay _InteractDisplay;
     private int _DistanceMax = 2;
-    // Start is called before the first frame update
+    
     void Start()
     {
         _InteractDisplay = InteractDisplayObject.GetComponent<InteractDisplay>();
@@ -24,7 +24,7 @@ public class DoorControll : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
@@ -51,7 +51,7 @@ public class DoorControll : MonoBehaviour
             {
                 doorframe.GetComponent<Animation>().Play("DoorOpen");
                 _InteractDisplay.UpdateInteractDisplay();
-                _doorOpenSound.Play();
+                
                 StartCoroutine(DelayOpen());
             }
             else
@@ -63,8 +63,7 @@ public class DoorControll : MonoBehaviour
         else if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax && _doorOpen)
         {
             doorframe.GetComponent<Animation>().Play("DoorClose");
-            _InteractDisplay.UpdateInteractDisplay();
-            _doorCloseSound.Play();
+            _InteractDisplay.UpdateInteractDisplay();         
             StartCoroutine(DelayClose());
         }
 

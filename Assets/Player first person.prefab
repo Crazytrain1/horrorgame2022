@@ -103,7 +103,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.7
-  m_Radius: 0.28
+  m_Radius: 0.46
   m_SlopeLimit: 45
   m_StepOffset: 0.25
   m_SkinWidth: 0.02
@@ -137,8 +137,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.7131689, z: 0.40894508}
-  m_Center: {x: 0, y: 0.9963113, z: 0.03345394}
+  m_Size: {x: 1, y: 1.7131689, z: 0.5692886}
+  m_Center: {x: 0, y: 0.9963113, z: 0.11362569}
 --- !u!81 &3802138395039212624
 AudioListener:
   m_ObjectHideFlags: 0
@@ -366,7 +366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5150395394304466382}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.375, z: 0}
+  m_LocalPosition: {x: 0, y: 1.653, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -533,6 +533,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7265819742881739497, guid: 94e2bf10c89ca1c46b05d9925f4c50b5, type: 3}
+      propertyPath: m_AABB.m_Center.x
+      value: -0.00024256669
+      objectReference: {fileID: 0}
+    - target: {fileID: -7265819742881739497, guid: 94e2bf10c89ca1c46b05d9925f4c50b5, type: 3}
+      propertyPath: m_AABB.m_Extent.x
+      value: 0.017015891
+      objectReference: {fileID: 0}
+    - target: {fileID: -7265819742881739497, guid: 94e2bf10c89ca1c46b05d9925f4c50b5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3a684c033def31a40a47fbbffccef155, type: 2}
@@ -555,6 +563,18 @@ PrefabInstance:
     - target: {fileID: 5522216100402888714, guid: 94e2bf10c89ca1c46b05d9925f4c50b5, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630377116941001489, guid: 94e2bf10c89ca1c46b05d9925f4c50b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: 94e2bf10c89ca1c46b05d9925f4c50b5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375120500782797340, guid: 94e2bf10c89ca1c46b05d9925f4c50b5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94e2bf10c89ca1c46b05d9925f4c50b5, type: 3}
