@@ -9,6 +9,8 @@ public class DoorControll : MonoBehaviour
     [SerializeField] GameObject doorframe;  
     [SerializeField] GameObject InteractDisplayObject;
     [SerializeField] bool _doorlocked;
+    [SerializeField] AudioSource _doorOpenSound;
+    [SerializeField] AudioSource _doorCloseSound;
     private bool _doorOpen;
     private bool Interacting;
 
@@ -49,6 +51,7 @@ public class DoorControll : MonoBehaviour
             {
                 doorframe.GetComponent<Animation>().Play("DoorOpen");
                 _InteractDisplay.UpdateInteractDisplay();
+                _doorOpenSound.Play();
                 StartCoroutine(DelayOpen());
             }
             else
@@ -61,6 +64,7 @@ public class DoorControll : MonoBehaviour
         {
             doorframe.GetComponent<Animation>().Play("DoorClose");
             _InteractDisplay.UpdateInteractDisplay();
+            _doorCloseSound.Play();
             StartCoroutine(DelayClose());
         }
 

@@ -6,13 +6,19 @@ using UnityEditor;
 using Cinemachine;
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
+
     [SerializeField] GameObject Spawner;
     [SerializeField] GameObject Player;
     [SerializeField] GameObject parent;
     [SerializeField] Transform parentT;
     [SerializeField] enum Level {MainMenu,Level0,Level1,Level2,Level3, Level4};
     [SerializeField] Level NextLevel;
-    
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
 
@@ -29,13 +35,4 @@ public class GameManager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag =="Player")
-        {
-            SceneManager.LoadScene((int)NextLevel);
-        }
-
-    }
 }
