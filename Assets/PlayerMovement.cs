@@ -12,8 +12,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask groundMask;
     [SerializeField] bool isGrounded;
     Vector3 velocity;
+    private void Awake()
+    {
+        GameManager.StateChanged += GameManager_StateChanged;
+    }
 
-    
+    private void OnDestroy()
+    {
+        GameManager.StateChanged -= GameManager_StateChanged;
+    }
+
+    private void GameManager_StateChanged(GameManager.GameState State)
+    {
+        Debug.Log(State.ToString());
+    }
+
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -35,4 +48,5 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
         
     }
+
 }

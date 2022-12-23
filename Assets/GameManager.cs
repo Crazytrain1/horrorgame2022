@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 using Cinemachine;
+using System;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -15,6 +17,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform parentT;
     [SerializeField] enum Level {MainMenu,Level0,Level1,Level2,Level3, Level4};
     [SerializeField] Level NextLevel;
+
+    public GameState State;
+
+    public static event Action<GameState> StateChanged;
     private void Awake()
     {
         Instance = this;
@@ -23,6 +29,8 @@ public class GameManager : MonoBehaviour
     void Start()
 
     {
+        UpdateGameState(GameState.Playing);
+
         
         parent = Instantiate(Player as GameObject);
         
@@ -32,6 +40,36 @@ public class GameManager : MonoBehaviour
         parentT = parent.transform;
       
         
+        
+    }
+    public void UpdateGameState(GameState newState)
+    {
+        State = newState;
+        switch (newState)
+        {
+            case GameState.Playing:
+                break;
+            case GameState.cinematic:
+                break;
+            case GameState.death:
+                break;
+            case GameState.Pausing:
+                break;
+            case GameState.interacting:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
+        }
+        StateChanged?.Invoke(newState);
+    }
+    public enum GameState
+    {
+        Playing,
+        Pausing,
+        interacting,
+        death,
+        cinematic
+
         
     }
 
