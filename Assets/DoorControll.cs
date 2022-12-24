@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class DoorControll : MonoBehaviour
 {
@@ -51,7 +52,9 @@ public class DoorControll : MonoBehaviour
             {
                 doorframe.GetComponent<Animation>().Play("DoorOpen");
                 _InteractDisplay.UpdateInteractDisplay();
-                
+                _doorOpenSound.Play();
+
+
                 StartCoroutine(DelayOpen());
             }
             else
