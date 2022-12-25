@@ -44,7 +44,7 @@ public class Punch : MonoBehaviour
             if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax)
             {
                 Debug.Log("punching");
-                _porte.SetLock(false);
+                _porte.ClockIn();
                 _CanInteract= false;
             }
         }

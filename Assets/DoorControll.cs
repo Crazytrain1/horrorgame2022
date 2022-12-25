@@ -10,10 +10,13 @@ public class DoorControll : MonoBehaviour
     [SerializeField] GameObject doorframe;  
     [SerializeField] GameObject InteractDisplayObject;
     [SerializeField] bool _doorlocked;
+    [SerializeField] bool notclockIn;
     [SerializeField] AudioSource _doorOpenSound;
     [SerializeField] AudioSource _doorCloseSound;
     private bool _doorOpen;
     private bool Interacting;
+
+    public InventoryItemData referenceItem;
 
     private InteractDisplay _InteractDisplay;
     private int _DistanceMax = 2;
@@ -50,16 +53,30 @@ public class DoorControll : MonoBehaviour
         {
             if (!_doorlocked)
             {
+                if (!notclockIn) 
+                { 
                 doorframe.GetComponent<Animation>().Play("DoorOpen");
                 _InteractDisplay.UpdateInteractDisplay();
                 _doorOpenSound.Play();
-
-
                 StartCoroutine(DelayOpen());
+                }
+                else
+                {
+                    _InteractDisplay.SetInteractDisplay(true, "you need to clock in", "open door");
+                }
+               
             }
             else
             {
-                _InteractDisplay.SetInteractDisplay(true, "clock in to enter", "open door");
+                if (InventorySystem.current.Get(referenceItem) == null)
+                {
+                    _InteractDisplay.SetInteractDisplay(true, "you need the keys", "open door");
+                }
+                else
+                {
+                    SetLock(false);
+                    InventorySystem.current.Remove(referenceItem);
+                }
             }
 
         }
@@ -74,6 +91,10 @@ public class DoorControll : MonoBehaviour
     public void SetLock(bool locked)
     {
         _doorlocked= locked;
+    }
+    public void ClockIn()
+    {
+        notclockIn= false;
     }
 
      IEnumerator DelayOpen()
