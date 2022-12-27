@@ -46,6 +46,8 @@ public class Punch : MonoBehaviour
                 Debug.Log("punching");
                 _porte.ClockIn();
                 _CanInteract= false;
+                _InteractDisplay.UpdateInteractDisplay();
+
             }
         }
     }
