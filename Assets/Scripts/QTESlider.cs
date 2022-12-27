@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QTEslider : MonoBehaviour
+public class QTESlider : MonoBehaviour
 {
     public GameObject minigame;
     public GameObject handle;
@@ -25,7 +25,7 @@ public class QTEslider : MonoBehaviour
 
 
 
-    // Start is called before the first frame update
+  
 
 
     void Start()
@@ -47,7 +47,7 @@ public class QTEslider : MonoBehaviour
         rtstart.transform.position = vectorLeft;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
 
@@ -55,8 +55,8 @@ public class QTEslider : MonoBehaviour
         var rtbar = bar.GetComponent<RectTransform>();
 
 
-        //need to change for new input system
-        /*if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
+       
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
         {
             interacting = true;
             //when the player hit the right place
@@ -73,7 +73,7 @@ public class QTEslider : MonoBehaviour
                 AnotherTry();
             }
       
-        }*/
+        }
 
         // decide when the bar should move right
         if ((rt.position.x <= rtstart.position.x) && !moveRight && !moveLeft && !interacting)
