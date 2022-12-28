@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Level NextLevel;
 
     public GameState State;
+    public GameState PreviousState;
 
     public static event Action<GameState> StateChanged;
     private void Awake()
@@ -35,11 +36,12 @@ public class GameManager : MonoBehaviour
     void Start()
 
     {
-        Debug.Log("gameManagerTest");
+        
         UpdateGameState(GameState.Playing);    
     }
     public void UpdateGameState(GameState newState)
     {
+        PreviousState = State;
         State = newState;
         switch (newState)
         {

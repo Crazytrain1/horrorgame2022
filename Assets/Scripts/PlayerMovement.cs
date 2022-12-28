@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (isGrounded && velocity.y < 0 )
+        if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
@@ -49,6 +49,15 @@ public class PlayerMovement : MonoBehaviour
 
             controller.Move(velocity * Time.deltaTime);
         }
+        if (Input.GetKeyDown(KeyCode.Escape)&& GameManager.Instance.State != GameManager.GameState.Pausing)
+        {
+            GameManager.Instance.UpdateGameState(GameManager.GameState.Pausing);
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && GameManager.Instance.State == GameManager.GameState.Pausing)
+        {
+            GameManager.Instance.UpdateGameState( GameManager.Instance.PreviousState);
+        }
+
     }
 
-}
+    }

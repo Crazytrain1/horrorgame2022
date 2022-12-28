@@ -9,8 +9,9 @@ public class Journal : MonoBehaviour
     [SerializeField] GameObject InteractDisplayObject;
     private InteractDisplay _InteractDisplay;
     private DoorControll _porte;
-    private bool open;
+    private bool _open;
     private int _DistanceMax = 2;
+    private bool _OnClose;
 
     public void Start()
     {
@@ -24,32 +25,37 @@ public class Journal : MonoBehaviour
     }
     private void OnMouseOver()
     {
-         if (TheDistance <= _DistanceMax)
-            {
+        if (TheDistance <= _DistanceMax)
+        {
 
-                _InteractDisplay.SetInteractDisplay(true, null, "Read journal");
+            _InteractDisplay.SetInteractDisplay(true, null, "Read journal");
 
 
-            }
-            else
-            {
-                _InteractDisplay.UpdateInteractDisplay();
+        }
+        else
+        {
+            _InteractDisplay.UpdateInteractDisplay();
 
-            }
-            if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax && !open)
-            {
+        }
+        if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax && !_open)
+        {
             GameManager.Instance.UpdateGameState(GameManager.GameState.interacting);
-            
+
             journal.SetActive(true);
-            open = true;
-            }
-            else if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax && open)
-            {
+            _open = true;
+        }
+       else  if (Input.GetKeyDown("e") && GameManager.Instance.State == GameManager.GameState.interacting && _open)
+        {
+
+            _OnClose = true;
             GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
             journal.SetActive(false);
-                open = false;
-            }
+            _open = false;
+        }
+
+
     }
+
     
 
     void OnMouseExit()

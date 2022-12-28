@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InteractDisplay : MonoBehaviour
@@ -8,8 +9,25 @@ public class InteractDisplay : MonoBehaviour
     [SerializeField] GameObject ActionDisplay;
     [SerializeField] GameObject ActionText;
     [SerializeField] GameObject Text;
+    [SerializeField] GameObject MenuPause;
     private TextMeshProUGUI _Text;
     private TextMeshProUGUI _InteractMessage;
+
+
+    private void Awake()
+    {
+        GameManager.StateChanged += GameManager_StateChanged;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.StateChanged -= GameManager_StateChanged;
+    }
+
+    private void GameManager_StateChanged(GameManager.GameState State)
+    {
+        MenuPause.SetActive(State == GameManager.GameState.Pausing);
+    }
 
     public void SetInteractDisplay(bool Key, string Message, string InteractMessage)
     {
