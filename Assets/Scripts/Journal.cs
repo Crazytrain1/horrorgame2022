@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Journal : MonoBehaviour
@@ -11,7 +12,10 @@ public class Journal : MonoBehaviour
     private DoorControll _porte;
     private bool _open;
     private int _DistanceMax = 2;
-    private bool _OnClose;
+    private bool _CanClose = false;
+
+
+
 
     public void Start()
     {
@@ -22,6 +26,15 @@ public class Journal : MonoBehaviour
     private void Update()
     {
         TheDistance = PlayerCasting.DistanceFromTarget;
+
+        if (Input.GetKeyDown("e") && GameManager.Instance.State == GameManager.GameState.interacting && _open && _CanClose)
+        {
+
+
+            GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+            journal.SetActive(false);
+            _open = false;
+        }
     }
     private void OnMouseOver()
     {
@@ -43,20 +56,20 @@ public class Journal : MonoBehaviour
 
             journal.SetActive(true);
             _open = true;
+            _CanClose= false;
+            StartCoroutine("Delay");
+            Debug.Log("fuck off");
         }
-       else  if (Input.GetKeyDown("e") && GameManager.Instance.State == GameManager.GameState.interacting && _open)
-        {
-
-            _OnClose = true;
-            GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
-            journal.SetActive(false);
-            _open = false;
-        }
+      
 
 
     }
 
-    
+    IEnumerator Delay()
+    {
+        yield return new WaitForEndOfFrame();
+        _CanClose = true;
+    }
 
     void OnMouseExit()
     {
