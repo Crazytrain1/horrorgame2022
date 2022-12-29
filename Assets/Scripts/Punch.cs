@@ -8,6 +8,8 @@ public class Punch : MonoBehaviour
     [SerializeField] GameObject porte;
     [SerializeField] float TheDistance;
     [SerializeField] GameObject InteractDisplayObject;
+    [SerializeField] Renderer rend;
+    [SerializeField] Shader shader;
     private InteractDisplay _InteractDisplay;
     private DoorControll _porte;
     private int _DistanceMax = 2;
@@ -20,6 +22,9 @@ public class Punch : MonoBehaviour
 
         _porte = porte.GetComponent<DoorControll>();
         _CanInteract= true;
+
+        rend = GetComponent<Renderer>();
+        shader = Shader.Find("Standard");
 
     }
     private void Update()
@@ -47,6 +52,7 @@ public class Punch : MonoBehaviour
                 _porte.ClockIn();
                 _CanInteract= false;
                 _InteractDisplay.UpdateInteractDisplay();
+                rend.material.shader = shader;
 
             }
         }
