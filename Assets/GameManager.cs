@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 using Cinemachine;
 using System;
+using UnityEngine.InputSystem.LowLevel;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,16 +16,28 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject Player;
     [SerializeField] GameObject parent;
     [SerializeField] Transform parentT;
-    [SerializeField] enum Level {MainMenu,Level0,Level1,Level2,Level3, Level4};
-    [SerializeField] Level NextLevel;
+
+    public Level CurrentLevel;
+    public Level NextLevel;
 
     public GameState State;
     public GameState PreviousState;
 
     public static event Action<GameState> StateChanged;
+    public static event Action<Level> LevelChanged;
     private void Awake()
     {
-        Instance = this;
+
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
         parent = Instantiate(Player as GameObject);
 
         parent.transform.position = Spawner.transform.position;
@@ -37,7 +50,8 @@ public class GameManager : MonoBehaviour
 
     {
         
-        UpdateGameState(GameState.Playing);    
+        UpdateGameState(GameState.Playing);
+        
     }
     public void UpdateGameState(GameState newState)
     {
@@ -61,6 +75,30 @@ public class GameManager : MonoBehaviour
         Debug.Log(State.ToString());
         StateChanged?.Invoke(newState);
     }
+
+    public void UpdateLevel(Level newLevel)
+    {
+        NextLevel = newLevel;
+        switch (newLevel)
+        {
+            case Level.Level0:
+                SceneManager.LoadScene("Level_00");
+                break;
+            case Level.Level1:
+                SceneManager.LoadScene("Level_01");
+                break;
+            case Level.Level2:
+                break;
+            case Level.Level3:
+                break;
+            case Level.Level4:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(newLevel), newLevel, null);
+        }
+        Debug.Log(NextLevel.ToString());
+        LevelChanged?.Invoke(newLevel);
+    }
     public enum GameState
     {
         Playing,
@@ -69,7 +107,15 @@ public class GameManager : MonoBehaviour
         death,
         cinematic
 
-        
+
     }
+    public enum Level
+    {
+        Level0, 
+        Level1, 
+        Level2, Level3,
+        Level4
+    }
+
 
 }
