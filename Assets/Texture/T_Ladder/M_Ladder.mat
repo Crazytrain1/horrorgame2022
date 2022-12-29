@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: M_Ladder
   m_Shader: {fileID: 4800000, guid: 35a500d816bc28c409f8ca20c3d0c93d, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -23,7 +23,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 940cc99f86d3a6f49b06c33bd80eb189, type: 3}
+        m_Texture: {fileID: 2800000, guid: b0faab503f9102f43b25b8c9e58b3343, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Cubemap:
@@ -51,15 +51,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: a4ab79f568795e04b914dbe77c8b1dcb, type: 3}
+        m_Texture: {fileID: 2800000, guid: a54e25fa5a582c342b75b6f9157ccba0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 6623bb26f69b977419f4f31248bb3470, type: 3}
+        m_Texture: {fileID: 2800000, guid: baffdef427361c04fab341163d19902a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 814fc5e1c4369af42b6b08563d1d84b9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 70534611066b41441b13a77cf3088180, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
