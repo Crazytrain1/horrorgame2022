@@ -10,7 +10,6 @@ Material:
   m_Name: Master_Dirt_Floor
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ValidKeywords:
-  - _DETAIL_MULX2
   - _NORMALMAP
   - _PARALLAXMAP
   m_InvalidKeywords: []
@@ -24,7 +23,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 8f58c59f5f22b084b96d9f3f8ccea943, type: 3}
+        m_Texture: {fileID: 2800000, guid: a75d72fb53abdef4aa8f0c69d4a16228, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -44,7 +43,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f96a42a59146bdb4083d0cf46d4bddd3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7b1e65c17dd6cf4449c77f492fb7cd41, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -52,11 +51,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: d3b242eaada2d3d4da3a102dadd5e425, type: 3}
+        m_Texture: {fileID: 2800000, guid: 12e865b4ae6aa5a4f96cfd86100d767b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: 6cfa236839034da43896378e80bd0d2f, type: 3}
+        m_Texture: {fileID: 2800000, guid: f7c8632cf533b47498f272fd3a3458c9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
