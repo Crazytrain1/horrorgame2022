@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -11,11 +12,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float groundDistance = 0.4f;
     [SerializeField] LayerMask groundMask;
     [SerializeField] bool isGrounded;
+    [SerializeField] GameObject SpotLight;
     private bool canMove = true;
+    private bool FlashlightOpen = false;
     Vector3 velocity;
+    public InventoryItemData referenceItem;
+    
     private void Awake()
     {
         GameManager.StateChanged += GameManager_StateChanged;
+
     }
 
     private void OnDestroy()
@@ -56,6 +62,19 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape) && GameManager.Instance.State == GameManager.GameState.Pausing)
         {
             GameManager.Instance.UpdateGameState( GameManager.Instance.PreviousState);
+        }
+        if(Input.GetKeyDown(KeyCode.F) && (InventorySystem.current.Get(referenceItem) != null))
+        {
+                if (FlashlightOpen)
+                {
+                    SpotLight.SetActive(false);
+                FlashlightOpen = false;
+            }
+                else
+                {
+                    SpotLight.SetActive(true);
+                FlashlightOpen= true;
+                }
         }
 
     }
