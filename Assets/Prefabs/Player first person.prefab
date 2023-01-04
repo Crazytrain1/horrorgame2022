@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 7851990947052883768}
   - component: {fileID: 4726623404458963263}
   - component: {fileID: 2690086581344515394}
-  - component: {fileID: 4908335992279229473}
+  - component: {fileID: 7401712852534385194}
   m_Layer: 0
   m_Name: CM brain
   m_TagString: MainCamera
@@ -504,7 +504,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3947552772526891428}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1a4c69f7a9d3ea43907b5765229dc85, type: 3}
   m_Name: 
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3947552772526891428}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 433faa8b758afed4f9295b193c697276, type: 3}
   m_Name: 
@@ -542,7 +542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ToTarget: 0
---- !u!114 &4908335992279229473
+--- !u!114 &7401712852534385194
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
