@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -169,7 +169,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6156863, y: 1}
+    m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -201,6 +201,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1606170759}
     m_Modifications:
+    - target: {fileID: 4896890849633017908, guid: 2441a17b504f92a4b868443bb4d291a0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 4896890849633017910, guid: 2441a17b504f92a4b868443bb4d291a0, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1300,6 +1304,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1606170759}
     m_Modifications:
+    - target: {fileID: 2625840608924460724, guid: 5571ea147143ffe40bb8726c9346a511, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 2625840608924460726, guid: 5571ea147143ffe40bb8726c9346a511, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1799,7 +1807,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6156863, y: 1}
+    m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1967,7 +1975,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6156863, y: 1}
+    m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1999,6 +2007,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1606170759}
     m_Modifications:
+    - target: {fileID: 2625840608924460724, guid: 5571ea147143ffe40bb8726c9346a511, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 2625840608924460726, guid: 5571ea147143ffe40bb8726c9346a511, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2705,6 +2717,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1606170759}
     m_Modifications:
+    - target: {fileID: 2625840608924460724, guid: 5571ea147143ffe40bb8726c9346a511, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 2625840608924460726, guid: 5571ea147143ffe40bb8726c9346a511, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2987,6 +3003,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1606170759}
     m_Modifications:
+    - target: {fileID: 4896890849633017908, guid: 2441a17b504f92a4b868443bb4d291a0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 4896890849633017910, guid: 2441a17b504f92a4b868443bb4d291a0, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -3445,6 +3465,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1606170759}
     m_Modifications:
+    - target: {fileID: 4896890849633017908, guid: 2441a17b504f92a4b868443bb4d291a0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 4896890849633017910, guid: 2441a17b504f92a4b868443bb4d291a0, type: 3}
       propertyPath: m_RootOrder
       value: 2
