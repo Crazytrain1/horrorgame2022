@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
                 break;
             case Level.Level1:
                 SceneManager.LoadScene("Level_01");
+                UpdateGameState(GameState.Playing);
                 break;
             case Level.Level2:
                 break;

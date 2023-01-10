@@ -169,6 +169,7 @@ MonoBehaviour:
     m_Bits: 128
   isGrounded: 0
   SpotLight: {fileID: 1664936626376776960}
+  flashlight: {fileID: 8599864539618366111}
   referenceItem: {fileID: 11400000, guid: 3ebec0fad601c974b9c6614827967338, type: 2}
 --- !u!1 &1664936626376776960
 GameObject:
@@ -279,7 +280,6 @@ GameObject:
   - component: {fileID: 7851990947052883768}
   - component: {fileID: 4726623404458963263}
   - component: {fileID: 2690086581344515394}
-  - component: {fileID: 7401712852534385194}
   m_Layer: 0
   m_Name: CM brain
   m_TagString: MainCamera
@@ -440,19 +440,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ToTarget: 0
---- !u!114 &7401712852534385194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3947552772526891428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce422f2e9fece364fa7f3e253c7d8b31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: 1e831cd199d57374e98e6c2e8c57a452, type: 2}
 --- !u!1 &5150395394304466382
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,9 +498,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7322070605267964985}
-  m_LocalRotation: {x: -0.020682007, y: -0.9655798, z: 0.072655074, w: 0.24889588}
-  m_LocalPosition: {x: -1.4388533, y: -1.1855581, z: 29.592632}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.02068202, y: -0.9655798, z: 0.072655134, w: 0.24889585}
+  m_LocalPosition: {x: -1.4388535, y: -1.1855588, z: 29.592638}
+  m_LocalScale: {x: 1.0000002, y: 1.0000004, z: 1.0000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6510415828293912779}
@@ -598,7 +585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8899327417296413922
 Transform:
   m_ObjectHideFlags: 0

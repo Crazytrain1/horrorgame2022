@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask groundMask;
     [SerializeField] bool isGrounded;
     [SerializeField] GameObject SpotLight;
+    [SerializeField] GameObject flashlight;
     private bool canMove = true;
     private bool FlashlightOpen = false;
     Vector3 velocity;
@@ -67,12 +68,14 @@ public class PlayerMovement : MonoBehaviour
         {
                 if (FlashlightOpen)
                 {
-                    SpotLight.SetActive(false);
+                SpotLight.SetActive(false);
                 FlashlightOpen = false;
+                flashlight.SetActive(false);
             }
                 else
                 {
-                    SpotLight.SetActive(true);
+                flashlight.SetActive(true);
+                SpotLight.SetActive(true);
                 FlashlightOpen= true;
                 }
         }
