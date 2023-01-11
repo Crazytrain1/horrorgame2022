@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public static event Action<Level> LevelChanged;
     private void Awake()
     {
+        
 
         if (Instance == null)
         {
@@ -37,13 +38,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
         parent = Instantiate(Player as GameObject);
 
         parent.transform.position = Spawner.transform.position;
 
 
         parentT = parent.transform;
+
     }
 
     void Start()
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
         UpdateGameState(GameState.Playing);
         
     }
+
     public void UpdateGameState(GameState newState)
     {
         PreviousState = State;

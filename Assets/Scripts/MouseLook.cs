@@ -8,7 +8,7 @@ public class MouseLook : MonoBehaviour
 {
     [SerializeField] float mouseSensitivity = 100f;
     [SerializeField] Transform playerBody;
-    private bool _canLook;
+    private bool _canLook = true;
     float xRotation = 0f;
     private void Awake()
     {
