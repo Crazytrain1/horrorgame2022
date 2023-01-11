@@ -20332,6 +20332,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 72a97ea3cd3f9d945b188e3dac906e07, type: 3}
   m_PrefabInstance: {fileID: 202674163}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &985053798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 985053799}
+  - component: {fileID: 985053800}
+  m_Layer: 0
+  m_Name: hitbox chair
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &985053799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985053798}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.401, y: 0.418, z: 28.530762}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1964077009}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &985053800
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985053798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0946217, z: 2.6547318}
+  m_Center: {x: 0, y: -0.20044756, z: 0.3476715}
 --- !u!1 &994857774 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ca36ee32172c4234c9a5152f414a12e6, type: 3}
@@ -24345,18 +24390,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'There seems to be an increase of thugs wandering the catacombs at night.
+  m_text: 'There seems to be an increase in thugs wandering the catacombs at night.
     Those crooks descend for the thrill of being spooked, without thinking of how
-    dangerous it is. Just last week, while doing is patrol, Jean found two 16 years
-    old boys. those poor boys would not have seen the light of the sun again but
-    for their luck. They must have entered from the area not open for the public
-    and stumbled their way to the exposition section.
+    dangerous it is. Just last week, while patrolling, Jean found two 16-years-old
+    boys. Those poor boys would not have seen the light of the sun again, but for
+    their luck. They must have entered from the area closed to the public and stumbled
+    their way to the exposition section.
 
 
-    Anyways, don''t forget
-    to take your flashlight down below, as it is now requested that you do your rounds
-    without light, since  it cost a fortune. The keys to the catacombs should be
-    with the flashlight behind the grid beside the staircase to the catacombs.'
+    Anyway, don''t forget to take your
+    flashlight down below, as the lights in the catacombs cost a fortune to run.
+    The keys to the catacombs should be in the locker room and the flashlight in
+    the toolbox next to the staircase.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23016f4bf796c56428a04a3677fe56e1, type: 2}
   m_sharedMaterial: {fileID: 7607177639532752232, guid: 23016f4bf796c56428a04a3677fe56e1, type: 2}
@@ -45422,7 +45467,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh86576
+  m_Name: pb_Mesh30050
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -48022,6 +48067,7 @@ Transform:
   - {fileID: 2046843463}
   - {fileID: 904796815}
   - {fileID: 755922548}
+  - {fileID: 985053799}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
