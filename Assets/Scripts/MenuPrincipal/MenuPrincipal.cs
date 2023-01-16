@@ -11,7 +11,7 @@ public class MenuPrincipal : MonoBehaviour
     public void OnQuitButton()
     {
         Application.Quit();
-        Debug.Log("quitting the game, u pussy?");
+        
     }
     public void OnOptionsButton()
     {
@@ -19,6 +19,6 @@ public class MenuPrincipal : MonoBehaviour
     }
     public void OnStartButton()
     {
-        SceneManager.LoadScene((int)NextLevel);
+        GameManager.Instance.UpdateLevel(GameManager.Level.Level0);
     }
 }

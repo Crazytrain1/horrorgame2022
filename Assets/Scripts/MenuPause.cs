@@ -12,7 +12,7 @@ public class MenuPause : MonoBehaviour
     }
     public void OnMainMenu()
     {
-        SceneManager.LoadScene("MenuPrincipal");
+        GameManager.Instance.UpdateLevel(GameManager.Level.MainMenu);
     }
 
 }
