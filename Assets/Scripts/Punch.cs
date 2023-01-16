@@ -24,7 +24,7 @@ public class Punch : MonoBehaviour
         _CanInteract= true;
 
         rend = GetComponent<Renderer>();
-        shader = Shader.Find("Standard");
+        shader = Shader.Find("Universal Render Pipeline/Lit");
 
     }
     private void Update()

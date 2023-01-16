@@ -8,13 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Master_Key
-  m_Shader: {fileID: -6465566751694194690, guid: 7c428dde62e9e3141a9e14e953a9a66d, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 45a66758167973d46b8d943c8ba4860d, type: 3}
   m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _METALLICGLOSSMAP
-  - _METALLICSPECGLOSSMAP
-  - _NORMALMAP
-  - _OCCLUSIONMAP
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -24,6 +20,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Ambiant_Occlusion:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Ambient_Occlusion:
         m_Texture: {fileID: 2800000, guid: e20431836b41eae4c80eb7526bdefac6, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -118,6 +118,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 1
