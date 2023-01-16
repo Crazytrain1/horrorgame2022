@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     SpotLight.SetActive(false);
                 FlashlightOpen = false;
-            }
+                }
                 else
                 {
                     SpotLight.SetActive(true);
