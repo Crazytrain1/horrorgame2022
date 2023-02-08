@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
-  public static AudioManager instance;
+    public static AudioManager instance;
+    public AudioSource audioSource;    
 
     [SerializeField] AudioMixer mixer;
 
@@ -33,5 +34,6 @@ public class AudioManager : MonoBehaviour
         mixer.SetFloat(MenuOptions.MIXER_MASTER, Mathf.Log10(masterVolume)*20);
         mixer.SetFloat(MenuOptions.MIXER_SFX, Mathf.Log10(sfxVolume) *20);
     }
+
 
 }

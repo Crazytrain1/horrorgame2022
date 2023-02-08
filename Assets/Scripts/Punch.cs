@@ -10,6 +10,7 @@ public class Punch : MonoBehaviour
     [SerializeField] GameObject InteractDisplayObject;
     [SerializeField] Renderer rend;
     [SerializeField] Shader shader;
+    [SerializeField] AudioSource _punchSound;
     private InteractDisplay _InteractDisplay;
     private DoorControll _porte;
     private int _DistanceMax = 2;
@@ -50,6 +51,7 @@ public class Punch : MonoBehaviour
             {
                 Debug.Log("punching");
                 _porte.ClockIn();
+                _punchSound.Play();
                 _CanInteract= false;
                 _InteractDisplay.UpdateInteractDisplay();
                 rend.material.shader = shader;

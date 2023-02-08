@@ -83,6 +83,7 @@ public class DoorControll : MonoBehaviour
         else if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax && _doorOpen)
         {
             doorframe.GetComponent<Animation>().Play("DoorClose");
+            _doorCloseSound.Play();
             _InteractDisplay.UpdateInteractDisplay();         
             StartCoroutine(DelayClose());
         }
