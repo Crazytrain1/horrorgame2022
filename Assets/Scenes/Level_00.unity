@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0, g: 0, b: 0, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -303,7 +303,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh126100
+  m_Name: pb_Mesh260136
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3827,6 +3827,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f9f91a72373f042459c0fa207ffe48cc, type: 3}
       propertyPath: m_Name
       value: Fan
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9f91a72373f042459c0fa207ffe48cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9f91a72373f042459c0fa207ffe48cc, type: 3}
@@ -17717,7 +17721,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh124708
+  m_Name: pb_Mesh258746
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18077,6 +18081,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2ff3371b6724f09488206ec1b3aafeb0, type: 3}
       propertyPath: m_Name
       value: Books A (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2ff3371b6724f09488206ec1b3aafeb0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ff3371b6724f09488206ec1b3aafeb0, type: 3}
@@ -22286,6 +22294,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ceiling Fan
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 35af27b1753447e4594807ef563a186c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35af27b1753447e4594807ef563a186c, type: 3}
 --- !u!1 &1133995678 stripped
@@ -23212,6 +23224,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b72c9936e85816f45b179918b8075eb6, type: 3}
       propertyPath: m_Name
       value: Contour_De_porte
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b72c9936e85816f45b179918b8075eb6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b72c9936e85816f45b179918b8075eb6, type: 3}
@@ -24261,6 +24277,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 02ebe5714cc63cc47beeb47ddb8822f3, type: 3}
       propertyPath: m_Name
       value: document_holder
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02ebe5714cc63cc47beeb47ddb8822f3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02ebe5714cc63cc47beeb47ddb8822f3, type: 3}
@@ -39722,7 +39742,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh125980
+  m_Name: pb_Mesh260016
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -43847,6 +43867,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Shelf
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 099299376b1474147bdf6446d98cdc29, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 099299376b1474147bdf6446d98cdc29, type: 3}
 --- !u!1 &1668598231 stripped
@@ -43951,6 +43975,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bd4a3d2982846d84cb0c7215cbadd09a, type: 3}
       propertyPath: m_Name
       value: Books B (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bd4a3d2982846d84cb0c7215cbadd09a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd4a3d2982846d84cb0c7215cbadd09a, type: 3}
@@ -51862,6 +51890,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Porte Manteau
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 11436f6f3210cb4409684b10477a4ab8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11436f6f3210cb4409684b10477a4ab8, type: 3}
 --- !u!1001 &2044152174
@@ -53650,6 +53682,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 8647638377973824073, guid: d2cdf095d204db6489af6202076134d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8647638377973824078, guid: d2cdf095d204db6489af6202076134d0, type: 3}
       propertyPath: m_RootOrder
       value: 37
@@ -53713,10 +53749,15 @@ PrefabInstance:
     - target: {fileID: 8647638379154133212, guid: d2cdf095d204db6489af6202076134d0, type: 3}
       propertyPath: _doorCloseSound
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8647638377974157315}
     - target: {fileID: 8647638379154133212, guid: d2cdf095d204db6489af6202076134d0, type: 3}
       propertyPath: InteractDisplayObject
       value: 
       objectReference: {fileID: 1926932483}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2cdf095d204db6489af6202076134d0, type: 3}
+--- !u!82 &8647638377974157315 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 9163484018227316601, guid: d2cdf095d204db6489af6202076134d0, type: 3}
+  m_PrefabInstance: {fileID: 8647638377974157314}
+  m_PrefabAsset: {fileID: 0}

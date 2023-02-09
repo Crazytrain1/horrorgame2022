@@ -23,8 +23,11 @@ public class DoorControll : MonoBehaviour
     
     void Start()
     {
-        _InteractDisplay = InteractDisplayObject.GetComponent<InteractDisplay>();
-        _InteractDisplay.UpdateInteractDisplay();
+        if (InteractDisplayObject != null)
+        {
+            _InteractDisplay = InteractDisplayObject.GetComponent<InteractDisplay>();
+            _InteractDisplay.UpdateInteractDisplay();
+        }
 
     }
 
@@ -49,7 +52,7 @@ public class DoorControll : MonoBehaviour
             _InteractDisplay.UpdateInteractDisplay();
 
         }
-        if(Input.GetKeyDown("e")&&TheDistance <= _DistanceMax && !_doorOpen)
+        if(Input.GetKeyDown("e")&&TheDistance <= _DistanceMax && !_doorOpen && !Interacting)
         {
             if (!_doorlocked)
             {
@@ -80,7 +83,7 @@ public class DoorControll : MonoBehaviour
             }
 
         }
-        else if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax && _doorOpen)
+        else if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax && _doorOpen && !Interacting)
         {
             doorframe.GetComponent<Animation>().Play("DoorClose");
             _doorCloseSound.Play();

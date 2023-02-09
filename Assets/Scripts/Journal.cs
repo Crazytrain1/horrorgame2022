@@ -19,8 +19,11 @@ public class Journal : MonoBehaviour
 
     public void Start()
     {
-        _InteractDisplay = InteractDisplayObject.GetComponent<InteractDisplay>();
-        _InteractDisplay.UpdateInteractDisplay();
+        if (InteractDisplayObject != null)
+        {
+            _InteractDisplay = InteractDisplayObject.GetComponent<InteractDisplay>();
+            _InteractDisplay.UpdateInteractDisplay();
+        }
 
     }
     private void Update()
