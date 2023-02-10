@@ -119,8 +119,7 @@ public class PlayerMovement : MonoBehaviour
             {
                switch (hit.collider.tag) 
                 {
-                    case "Footsteps/WOOD":
-                        UnityEngine.Debug.Log("footstep");
+                    case "Footsteps/WOOD":                       
                         _footStep.PlayOneShot(woodClips[UnityEngine.Random.Range(0, woodClips.Length-1)]);
                         break;
                     case "Footsteps/CEMENT":
