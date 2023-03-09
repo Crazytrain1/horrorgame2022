@@ -8,6 +8,7 @@ public class ItemInteract : MonoBehaviour
     [SerializeField] int objectType = 1;
     [SerializeField] GameObject InteractDisplayObject;
     [SerializeField] float TheDistance;
+    [SerializeField] string objectName;
     private InteractDisplay _InteractDisplay;
     private int _DistanceMax = 2;
     private GameObject realItem;
@@ -30,7 +31,7 @@ public class ItemInteract : MonoBehaviour
         if (TheDistance <= _DistanceMax)
         {
 
-            _InteractDisplay.SetInteractDisplay(true, null, "Pick up office keys");
+            _InteractDisplay.SetInteractDisplay(true, null, objectName);
 
 
         }
