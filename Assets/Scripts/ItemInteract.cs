@@ -31,7 +31,7 @@ public class ItemInteract : MonoBehaviour
         if (TheDistance <= _DistanceMax)
         {
 
-            _InteractDisplay.SetInteractDisplay(true, null, objectName);
+            _InteractDisplay.SetInteractDisplay("[E]", null, objectName);
 
 
         }

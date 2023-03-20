@@ -19,7 +19,7 @@ public class Punch : MonoBehaviour
     public void Start()
     {
         _InteractDisplay = InteractDisplayObject.GetComponent<InteractDisplay>();
-        _InteractDisplay.UpdateInteractDisplay();
+        
 
         _porte = porte.GetComponent<DoorControll>();
         _CanInteract= true;
@@ -38,7 +38,7 @@ public class Punch : MonoBehaviour
             if (TheDistance <= _DistanceMax)
             {
 
-                _InteractDisplay.SetInteractDisplay(true, null, "Clock in");
+                _InteractDisplay.SetInteractDisplay("[E]", null, "Clock in");
 
 
             }

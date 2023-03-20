@@ -1,10 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
+
 public class Journal : MonoBehaviour
 {
+
+    public event Action ClockFall;
+
     [SerializeField] GameObject journal;
     [SerializeField] float TheDistance;
     [SerializeField] GameObject InteractDisplayObject;
@@ -13,8 +19,9 @@ public class Journal : MonoBehaviour
     private bool _open;
     private int _DistanceMax = 2;
     private bool _CanClose = false;
-
-
+   
+    
+    
 
 
     public void Start()
@@ -37,6 +44,7 @@ public class Journal : MonoBehaviour
             GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
             journal.SetActive(false);
             _open = false;
+            ClockFall?.Invoke();
         }
     }
     private void OnMouseOver()
@@ -44,7 +52,7 @@ public class Journal : MonoBehaviour
         if (TheDistance <= _DistanceMax)
         {
 
-            _InteractDisplay.SetInteractDisplay(true, null, "Read journal");
+            _InteractDisplay.SetInteractDisplay("[E]", null, "Read journal");
 
 
         }
@@ -61,7 +69,7 @@ public class Journal : MonoBehaviour
             _open = true;
             _CanClose= false;
             StartCoroutine("Delay");
-            Debug.Log("fuck off");
+           
         }
       
 

@@ -43,7 +43,7 @@ public class DoorControll : MonoBehaviour
         if(TheDistance <=_DistanceMax && !Interacting )
         {
 
-            _InteractDisplay.SetInteractDisplay(true, null, "open door");
+            _InteractDisplay.SetInteractDisplay("[E]", null, "open door");
             
             
         }
@@ -65,7 +65,7 @@ public class DoorControll : MonoBehaviour
                 }
                 else
                 {
-                    _InteractDisplay.SetInteractDisplay(true, "you need to clock in", "open door");
+                    _InteractDisplay.SetInteractDisplay("[E]", "you need to clock in", "open door");
                 }
                
             }
@@ -73,7 +73,7 @@ public class DoorControll : MonoBehaviour
             {
                 if (InventorySystem.current.Get(referenceItem) == null)
                 {
-                    _InteractDisplay.SetInteractDisplay(true, "you need the keys", "open door");
+                    _InteractDisplay.SetInteractDisplay("[E]", "you need the keys", "open door");
                 }
                 else
                 {

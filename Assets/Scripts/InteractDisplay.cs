@@ -11,6 +11,7 @@ public class InteractDisplay : MonoBehaviour
     [SerializeField] GameObject Text;
     [SerializeField] GameObject MenuPause;
     private TextMeshProUGUI _Text;
+    private TextMeshProUGUI _ActionText;
     private TextMeshProUGUI _InteractMessage;
 
 
@@ -29,12 +30,19 @@ public class InteractDisplay : MonoBehaviour
         MenuPause.SetActive(State == GameManager.GameState.Pausing);
     }
 
-    public void SetInteractDisplay(bool Key, string Message, string InteractMessage)
+
+    // Key is the key used to interact with the object
+    // Message is a box text in the middle of the screen
+    // InteractMessage is a box text below the Key
+    public void SetInteractDisplay(string Key, string Message, string InteractMessage)
     {
-        if (Key)
+
+        if (Key != null)
         {
 
             ActionText.SetActive(true);
+            _ActionText = ActionText.GetComponent<TextMeshProUGUI>();
+            _ActionText.text = Key;
         }
         if(Message != null) 
         {

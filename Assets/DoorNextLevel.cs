@@ -31,7 +31,7 @@ public class DoorNextLevel : MonoBehaviour
         if (TheDistance <= _DistanceMax)
         {
 
-            _InteractDisplay.SetInteractDisplay(true, null, "enter Catacombs");
+            _InteractDisplay.SetInteractDisplay("[E]", null, "enter Catacombs");
 
 
         }

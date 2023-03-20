@@ -17,7 +17,7 @@ public class ToolBox : MonoBehaviour
     {
         _InteractDisplay = InteractDisplayObject.GetComponent<InteractDisplay>();
 
-        _InteractDisplay.UpdateInteractDisplay();
+        
 
     }
     private void Update()
@@ -41,7 +41,7 @@ public class ToolBox : MonoBehaviour
             if (TheDistance <= _DistanceMax)
             {
 
-                _InteractDisplay.SetInteractDisplay(true, null, "search toolbox");
+                _InteractDisplay.SetInteractDisplay("[E]", null, "search toolbox");
 
 
             }
