@@ -15,7 +15,6 @@ public class Journal : MonoBehaviour
     [SerializeField] float TheDistance;
     [SerializeField] GameObject InteractDisplayObject;
     private InteractDisplay _InteractDisplay;
-    private DoorControll _porte;
     private bool _open;
     private int _DistanceMax = 2;
     private bool _CanClose = false;

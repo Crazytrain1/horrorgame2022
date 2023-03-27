@@ -32,7 +32,7 @@ public class LightOfflevel0 : MonoBehaviour
     //display feedback to force the player to use the flashlight
     IEnumerator Flashlight()
     {
-        Debug.Log("Testing ree");
+        
         yield return new WaitForSeconds(2);
         _InteractDisplay.SetInteractDisplay("[F]", "use your flashlight to see in the dark", null);
         yield return new WaitForSeconds(4);
