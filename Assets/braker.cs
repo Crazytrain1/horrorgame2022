@@ -1,15 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class braker : MonoBehaviour
 {
 
     [SerializeField] GameObject InteractDisplayObject;
-    private InteractDisplay _InteractDisplay;
     [SerializeField] float TheDistance;
-    private int _DistanceMax = 2;
+    [SerializeField] GameObject[] lights;
 
+
+    private InteractDisplay _InteractDisplay;
+
+    public event Action breakerclosed;
+
+    private int _DistanceMax = 2;
+    [SerializeField] PlayableDirector _Director;
     public void Start()
     {
         if (InteractDisplayObject != null)
@@ -42,6 +50,13 @@ public class braker : MonoBehaviour
         }
         if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax)
         {
+            _Director.Play();
+            breakerclosed?.Invoke();
+            foreach ( GameObject lightbulb in lights)
+            {
+                lightbulb.SetActive(false);
+            }
+
             
 
         }
