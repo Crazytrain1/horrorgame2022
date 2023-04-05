@@ -13,6 +13,7 @@ public class braker : MonoBehaviour
 
 
     private InteractDisplay _InteractDisplay;
+    private bool eventDone = false;
 
     public event Action breakerclosed;
 
@@ -36,7 +37,7 @@ public class braker : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (TheDistance <= _DistanceMax)
+        if (TheDistance <= _DistanceMax &&  !eventDone )
         {
 
             _InteractDisplay.SetInteractDisplay("[E]", null, "Turn off light");
@@ -48,8 +49,9 @@ public class braker : MonoBehaviour
             _InteractDisplay.UpdateInteractDisplay();
 
         }
-        if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax)
+        if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax && !eventDone)
         {
+            eventDone = true;
             _Director.Play();
             breakerclosed?.Invoke();
             foreach ( GameObject lightbulb in lights)
