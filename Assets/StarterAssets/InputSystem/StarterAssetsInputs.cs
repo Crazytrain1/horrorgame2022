@@ -17,7 +17,7 @@ namespace StarterAssets
 		public bool sprint;
 		public bool Interact;
 		public bool Flashlight;
-		public GameObject light;
+		public GameObject lighteeeeeeeweightt;
 		[Header("Movement Settings")]
 		public bool analogMovement;
 		
@@ -77,13 +77,13 @@ namespace StarterAssets
 			if (Flashlight == true)
 			{
 				FlashlightInput(!value.isPressed);
-				light.SetActive(false);
+				lighteeeeeeeweightt.SetActive(false);
 
 			}
 			else
 			{
 				FlashlightInput(value.isPressed);
-				light.SetActive(true);
+				lighteeeeeeeweightt.SetActive(true);
 			}
 		}
 		public void MoveInput(Vector2 newMoveDirection)

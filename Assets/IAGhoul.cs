@@ -10,14 +10,25 @@ enum State{
 public class IAGhoul : MonoBehaviour
 {
 
-    [SerializeField] float lookDistance = 3; 
+    
+
+
+    public float radius;
+    [Range(0, 360)]
+    public float angle;
+
+    public GameObject playerRef;
+
+    public LayerMask targetMask;
+    public LayerMask obstructionMask;
 
     private State currentState;
-    RaycastHit Hit;
+  
     private Vector3 playerPosition;
     private bool giveUp =false;
-    private bool startedCoroutine = false;
     private IEnumerator lastSeenCoroutine;
+
+    RaycastHit Hit;
 
     NavMeshAgent agent;
     public Transform[] waypoints;
@@ -28,6 +39,7 @@ public class IAGhoul : MonoBehaviour
     {
 
         agent = GetComponent<NavMeshAgent>();
+        playerRef = GameObject.FindGameObjectWithTag("Player");
         lastSeenCoroutine = null;
         currentState= State.Roaming;
         UpdateDestination();
@@ -212,21 +224,37 @@ public class IAGhoul : MonoBehaviour
     }
 
 
-    private bool SeePlayer()
+    public bool SeePlayer()
     {
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out Hit, lookDistance) && Hit.transform.tag == "Player")
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
+        if (rangeChecks.Length != 0)
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * Hit.distance, Color.yellow);
+            Transform target = rangeChecks[0].transform;
+            Vector3 directionToTarget= (target.position - transform.position).normalized;
 
-            
-            playerPosition = Hit.transform.position;
-            Debug.Log(playerPosition.ToString());
-            return true;
+            if(Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+            {
 
+                float distanceToTarget = Vector3.Distance(transform.position, target.position);
+
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) { 
+
+
+                    //NEED TO GET PLAYER POSITION FOR LAST SEEN STATE   
+                    //playerPosition = Hit.transform.position;
+                    
+                    return true;
+                    
+                }
+                else
+                    return false; 
+            }
+            else
+                return false;
         }
-
         return false;
+        
     }
 
     IEnumerator StopChaseDebug()

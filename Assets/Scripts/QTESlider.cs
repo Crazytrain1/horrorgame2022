@@ -20,7 +20,7 @@ public class QTESlider : MonoBehaviour
     [SerializeField] float Lefthard;
     [SerializeField] float Righthard;
 
-    [SerializeField] int tryLeft = 3;
+    //[SerializeField] int tryLeft = 3;
 
 
 
