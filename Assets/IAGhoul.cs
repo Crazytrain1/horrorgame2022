@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 enum State{
     Roaming, Chasing, Searching, Kill,  LastSeen
 }
@@ -19,10 +19,18 @@ public class IAGhoul : MonoBehaviour
     private bool startedCoroutine = false;
     private IEnumerator lastSeenCoroutine;
 
+    NavMeshAgent agent;
+    public Transform[] waypoints;
+    Vector3 target;
+    int waypointIndex;
+
     void Start()
     {
+
+        agent = GetComponent<NavMeshAgent>();
         lastSeenCoroutine = null;
         currentState= State.Roaming;
+        UpdateDestination();
     }
 
     // Update is called once per frame
@@ -65,6 +73,21 @@ public class IAGhoul : MonoBehaviour
         }
     }
 
+    void UpdateDestination()
+    {
+        target = waypoints[waypointIndex].transform.position;
+        agent.SetDestination(target);
+
+    }
+    void IterateWaypointIndex()
+    {
+        waypointIndex++;
+        if(waypointIndex == waypoints.Length) 
+        {
+            waypointIndex = 0;
+        }
+
+    }
 
     private void Roaming()
     {
@@ -78,7 +101,11 @@ public class IAGhoul : MonoBehaviour
         else
         {
             //Move(closest path)
-            //Move(Path)
+            if(Vector3.Distance(transform.position, target) < 1)
+            {
+                IterateWaypointIndex();
+                UpdateDestination();
+            }
         }
     }
     private void Chasing()
@@ -198,7 +225,7 @@ public class IAGhoul : MonoBehaviour
             return true;
 
         }
-        Debug.Log(Hit.transform.tag);
+
         return false;
     }
 
