@@ -28,17 +28,21 @@ public class IAGhoul : MonoBehaviour
     private bool giveUp =false;
     private IEnumerator lastSeenCoroutine;
 
+    [SerializeField] float killRange;
+    [SerializeField] float distanceToTarget;
+    [SerializeField] float ghoulSpeed;
     RaycastHit Hit;
 
     NavMeshAgent agent;
     public Transform[] waypoints;
-    Vector3 target;
+    Vector3 WaypointTarget;
     int waypointIndex;
 
     void Start()
     {
 
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = ghoulSpeed;
         playerRef = GameObject.FindGameObjectWithTag("Player");
         lastSeenCoroutine = null;
         currentState= State.Roaming;
@@ -87,8 +91,9 @@ public class IAGhoul : MonoBehaviour
 
     void UpdateDestination()
     {
-        target = waypoints[waypointIndex].transform.position;
-        agent.SetDestination(target);
+        //need to only update when in Roaming mode
+        WaypointTarget = waypoints[waypointIndex].transform.position;
+        agent.SetDestination(WaypointTarget);
 
     }
     void IterateWaypointIndex()
@@ -112,12 +117,18 @@ public class IAGhoul : MonoBehaviour
         }
         else
         {
-            //Move(closest path)
-            if(Vector3.Distance(transform.position, target) < 1)
-            {
-                IterateWaypointIndex();
+            
+
+                
+                if (Vector3.Distance(transform.position, WaypointTarget) < 1)
+                {
+                    IterateWaypointIndex();
+                    UpdateDestination();
+                }
                 UpdateDestination();
-            }
+            
+            
+            
         }
     }
     private void Chasing()
@@ -126,10 +137,11 @@ public class IAGhoul : MonoBehaviour
         if (SeePlayer())
         {
             giveUp = false;
-            //Move to playerPosition
-            //look at player Position
-            if (Hit.distance <= 3.00f)
+            agent.SetDestination(playerPosition);
+            
+            if (distanceToTarget <= killRange)
             {
+                agent.isStopped= true;
                 currentState = State.Kill;
             }
         }
@@ -156,6 +168,8 @@ public class IAGhoul : MonoBehaviour
     private void LastSeen()
     {
         //Move to playerPosition
+
+
         //look at playerPosition
 
         if(SeePlayer())
@@ -236,14 +250,14 @@ public class IAGhoul : MonoBehaviour
             if(Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
             {
 
-                float distanceToTarget = Vector3.Distance(transform.position, target.position);
+                 distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) { 
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) {
 
 
-                    //NEED TO GET PLAYER POSITION FOR LAST SEEN STATE   
-                    //playerPosition = Hit.transform.position;
-                    
+
+                    playerPosition = target.position;
+
                     return true;
                     
                 }
