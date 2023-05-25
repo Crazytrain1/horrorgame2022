@@ -10,6 +10,8 @@ public class InteractDisplay : MonoBehaviour
     [SerializeField] GameObject ActionText;
     [SerializeField] GameObject Text;
     [SerializeField] GameObject MenuPause;
+    [SerializeField] GameObject MenuDeath;
+
     private TextMeshProUGUI _Text;
     private TextMeshProUGUI _ActionText;
     private TextMeshProUGUI _InteractMessage;
@@ -28,6 +30,7 @@ public class InteractDisplay : MonoBehaviour
     private void GameManager_StateChanged(GameManager.GameState State)
     {
         MenuPause.SetActive(State == GameManager.GameState.Pausing);
+        MenuDeath.SetActive(State == GameManager.GameState.death);
     }
 
 
@@ -60,6 +63,8 @@ public class InteractDisplay : MonoBehaviour
         }
 
     }
+
+    
 
     public void UpdateInteractDisplay() 
     {

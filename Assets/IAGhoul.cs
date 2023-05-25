@@ -11,7 +11,7 @@ enum State{
 public class IAGhoul : MonoBehaviour
 {
 
-    
+
 
 
     public float radius;
@@ -24,9 +24,9 @@ public class IAGhoul : MonoBehaviour
     public LayerMask obstructionMask;
 
     private State currentState;
-  
+
     private Vector3 playerPosition;
-    private bool giveUp =false;
+    private bool giveUp = false;
     private IEnumerator lastSeenCoroutine;
     private bool isKilled = false;
 
@@ -51,7 +51,7 @@ public class IAGhoul : MonoBehaviour
         agent.speed = ghoulSpeed;
         playerRef = GameObject.FindGameObjectWithTag("Player");
         lastSeenCoroutine = null;
-        currentState= State.Roaming;
+        currentState = State.Roaming;
         UpdateDestination();
     }
 
@@ -64,7 +64,7 @@ public class IAGhoul : MonoBehaviour
 
 
 
-         
+
             switch (currentState)
             {
                 case State.Roaming:
@@ -105,7 +105,7 @@ public class IAGhoul : MonoBehaviour
     void IterateWaypointIndex()
     {
         waypointIndex++;
-        if(waypointIndex == waypoints.Length) 
+        if (waypointIndex == waypoints.Length)
         {
             waypointIndex = 0;
         }
@@ -115,7 +115,7 @@ public class IAGhoul : MonoBehaviour
     private void Roaming()
     {
 
-        
+
         if (SeePlayer())
         {
 
@@ -123,18 +123,18 @@ public class IAGhoul : MonoBehaviour
         }
         else
         {
-            
 
-                
-                if (Vector3.Distance(transform.position, WaypointTarget) < 1)
-                {
-                    IterateWaypointIndex();
-                    UpdateDestination();
-                }
+
+
+            if (Vector3.Distance(transform.position, WaypointTarget) < 1)
+            {
+                IterateWaypointIndex();
                 UpdateDestination();
-            
-            
-            
+            }
+            UpdateDestination();
+
+
+
         }
     }
     private void Chasing()
@@ -144,16 +144,16 @@ public class IAGhoul : MonoBehaviour
         {
             giveUp = false;
             agent.SetDestination(playerPosition);
-            
+
             if (distanceToTarget <= killRange)
             {
-                agent.isStopped= true;
+                agent.isStopped = true;
                 currentState = State.Kill;
             }
         }
         else
         {
-            
+
             currentState = State.LastSeen;
         }
     }
@@ -178,29 +178,29 @@ public class IAGhoul : MonoBehaviour
 
         //look at playerPosition
 
-        if(SeePlayer())
+        if (SeePlayer())
         {
             if (lastSeenCoroutine != null)
             {
                 StopCoroutine(lastSeenCoroutine);
-                
-                lastSeenCoroutine= null;
-                
+
+                lastSeenCoroutine = null;
+
             }
             giveUp = false;
             currentState = State.Chasing;
             return;
         }
-      
+
         else if (this.transform.position == playerPosition)
         {
-            if(SeePlayer())
+            if (SeePlayer())
             {
                 if (lastSeenCoroutine != null)
                 {
                     StopCoroutine(lastSeenCoroutine);
-                    lastSeenCoroutine = null;           
-                    
+                    lastSeenCoroutine = null;
+
                 }
                 currentState = State.Chasing;
                 return;
@@ -219,9 +219,9 @@ public class IAGhoul : MonoBehaviour
         }
         if (giveUp)
         {
-            giveUp= false;
+            giveUp = false;
             lastSeenCoroutine = null;
-            
+
             currentState = State.Roaming;
             return;
         }
@@ -242,9 +242,10 @@ public class IAGhoul : MonoBehaviour
         Debug.Log("get gud scrub");
         if (!isKilled)
         {
-            _Director.Play();
+            StartCoroutine(PlayTimelineCoroutine(_Director));
         }
-        isKilled= true;
+        isKilled = true;
+
 
     }
 
@@ -256,38 +257,47 @@ public class IAGhoul : MonoBehaviour
         if (rangeChecks.Length != 0)
         {
             Transform target = rangeChecks[0].transform;
-            Vector3 directionToTarget= (target.position - transform.position).normalized;
+            Vector3 directionToTarget = (target.position - transform.position).normalized;
 
-            if(Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+            if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
             {
 
-                 distanceToTarget = Vector3.Distance(transform.position, target.position);
+                distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) {
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                {
 
 
 
                     playerPosition = target.position;
 
                     return true;
-                    
+
                 }
                 else
-                    return false; 
+                    return false;
             }
             else
                 return false;
         }
         return false;
-        
+
     }
 
     IEnumerator StopChaseDebug()
     {
         giveUp = false;
         yield return new WaitForSeconds(5f);
-        giveUp= true;
+        giveUp = true;
         lastSeenCoroutine = null;
+    }
+
+    IEnumerator PlayTimelineCoroutine(PlayableDirector _Director)
+    {
+        _Director.Play();
+        yield return new WaitForSeconds((float)_Director.duration);
+        GameManager.Instance.UpdateGameState(GameManager.GameState.death);
+
     }
 }
 

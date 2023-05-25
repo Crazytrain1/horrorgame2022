@@ -8,7 +8,7 @@ public class MenuPause : MonoBehaviour
 
     [SerializeField] GameObject options;
 
-    public void OnReume()
+    public void OnResume()
     {
         GameManager.Instance.UpdateGameState(GameManager.Instance.PreviousState);
     }
