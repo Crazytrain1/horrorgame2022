@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class MenuPause : MonoBehaviour
 {
 
+    [SerializeField] GameObject options;
+
     public void OnReume()
     {
         GameManager.Instance.UpdateGameState(GameManager.Instance.PreviousState);
@@ -13,6 +15,13 @@ public class MenuPause : MonoBehaviour
     public void OnMainMenu()
     {
         GameManager.Instance.UpdateLevel(GameManager.Level.MainMenu);
+    }
+
+    public void OnOptions()
+    {
+        Debug.Log("menu d'options");
+        options.SetActive(true);
+
     }
 
 }
