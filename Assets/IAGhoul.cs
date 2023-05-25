@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Playables;
 enum State{
     Roaming, Chasing, Searching, Kill,  LastSeen
 }
@@ -27,10 +28,15 @@ public class IAGhoul : MonoBehaviour
     private Vector3 playerPosition;
     private bool giveUp =false;
     private IEnumerator lastSeenCoroutine;
+    private bool isKilled = false;
 
     [SerializeField] float killRange;
     [SerializeField] float distanceToTarget;
     [SerializeField] float ghoulSpeed;
+
+    [SerializeField] PlayableDirector _Director;
+
+
     RaycastHit Hit;
 
     NavMeshAgent agent;
@@ -234,6 +240,11 @@ public class IAGhoul : MonoBehaviour
     private void Kill()
     {
         Debug.Log("get gud scrub");
+        if (!isKilled)
+        {
+            _Director.Play();
+        }
+        isKilled= true;
 
     }
 
