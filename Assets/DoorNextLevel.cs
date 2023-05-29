@@ -8,11 +8,11 @@ public class DoorNextLevel : MonoBehaviour
 
     [SerializeField] float TheDistance;
     [SerializeField] GameObject InteractDisplayObject;
-
+    private InventorySystem.InventoryItem InventoryItem;
     private InteractDisplay _InteractDisplay;
     private int _DistanceMax = 2;
     private IDataService DataService = new JsonDataService();
-    private InventorySystem _InventorySystem;
+    private string test = "I have commited war crimes in Yougoslavia";
     private bool EncryptionEnabled;
     
     
@@ -47,25 +47,17 @@ public class DoorNextLevel : MonoBehaviour
         }
         if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax)
         {
-           
+            GameManager.Instance.saveInventory();
             GameManager.Instance.UpdateLevel(GameManager.Level.Level1);
             _InteractDisplay.UpdateInteractDisplay();
         }
 
     }
 
-    public void SerializeJson()
-    {
-        if (DataService.SaveData("/inventory.json", _InventorySystem, EncryptionEnabled))
-        {
-            Debug.Log("Sheeeeesh");
-        }
-        else
-        {
-            Debug.Log("Could not save file!");
-        }
 
-    }
+      
+
+    
 
     void OnMouseExit()
     {

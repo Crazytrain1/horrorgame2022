@@ -8,11 +8,17 @@ using System;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.UI;
 using System.Threading.Tasks;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject _loaderCanvas;
     [SerializeField] private Image _progressBar;
+
+
+    [SerializeField] InventoryItemData FlashLight;
+    [SerializeField] InventoryItemData KeyLevel0;
+
     private float _target;
 
 
@@ -26,6 +32,12 @@ public class GameManager : MonoBehaviour
 
     public static event Action<GameState> StateChanged;
     public static event Action<Level> LevelChanged;
+
+    private IDataService DataService = new JsonDataService();
+    private bool EncryptionEnabled;
+
+    private List<String[]> inventoryList = new List<string[]>();
+    string[] objectInfo;
     private void Awake()
     {
         
@@ -106,7 +118,7 @@ public class GameManager : MonoBehaviour
 
     private async void LoadScene(string sceneName)
     {
-
+        
         var scene = SceneManager.LoadSceneAsync(sceneName);
         scene.allowSceneActivation = false;
         _loaderCanvas.SetActive(true);
@@ -125,6 +137,54 @@ public class GameManager : MonoBehaviour
         scene.allowSceneActivation = true;
         _loaderCanvas.SetActive(false);
     }
+
+    public void loadInventory()
+    {
+        inventoryList = DataService.LoadData<List<String[]>>("/inventory.json", EncryptionEnabled);
+        for (int i = 0; i < inventoryList.Count; i++)
+        {
+            if (inventoryList[i].First() == FlashLight.id) 
+            {
+                for (int j = 0; j < Int32.Parse(inventoryList[i].Last()); j++)
+                {
+
+                    InventorySystem.current.Add(FlashLight);
+                }
+            }
+            if (inventoryList[i].First() == KeyLevel0.id)
+            {
+                for (int j = 0; j < Int32.Parse(inventoryList[j].Last()); j++)
+                {
+                    InventorySystem.current.Add(KeyLevel0);
+                }
+            }
+
+        }
+
+        InventorySystem.current.InventoryChangedEvent();
+    }
+
+    public void saveInventory()
+    {
+        
+        
+
+        foreach (var i in InventorySystem.current.inventory)
+        {
+            
+            inventoryList.Add(new string[]{ i.data.id, i.stackSize.ToString() });
+           
+        }
+        if (DataService.SaveData("/inventory.json", inventoryList, EncryptionEnabled))
+        {
+            Debug.Log("Sheeeeesh");
+        }
+        else
+        {
+            Debug.Log("Could not save file!");
+        }
+    }
+
     public enum GameState
     {
         Playing,

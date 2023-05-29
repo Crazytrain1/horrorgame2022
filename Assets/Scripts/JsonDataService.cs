@@ -26,20 +26,23 @@ public class JsonDataService : IDataService
                 {
                     Debug.Log("Data exists. Deleting old file and writing a new one!");
                     System.IO.File.Delete(path);
+                Debug.Log(path);
                 }
                 else
                 {
                     Debug.Log("Writing file for the first time!");
                 }
-                
-                using FileStream stream = System.IO.File.Create(path);
-                if(Encrypted)
-                {
-                    WriteEncryptedData(Data, stream);
-                }
-                stream.Close();
-                System.IO.File.WriteAllText(path, JsonConvert.SerializeObject(Data));
-                return true;
+
+
+
+            using FileStream stream = System.IO.File.Create(path);
+            if (Encrypted)
+            {
+                WriteEncryptedData(Data, stream);
+            }
+            stream.Close();
+            System.IO.File.WriteAllText(path, JsonConvert.SerializeObject(Data));
+            return true;
                 
             }
             catch (Exception e )

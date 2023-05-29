@@ -18,13 +18,17 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void Start()
     {
         current = this;
         inventory = new List<InventoryItem>();
         m_itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
+        GameManager.Instance.loadInventory();
+
 
     }
+
+
 
     public void Add(InventoryItemData referenceData)
     {
