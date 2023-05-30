@@ -18,9 +18,10 @@ public class loadMenuOptions : MonoBehaviour
     {
 
         GameManager.Instance.lastSave = (saveFile);
+        GameManager.Instance.saveLastSave();
 
-
-    //get load level and call the game manager funciton with it 
+        //need to change it so it takes the right level for the file save
+        GameManager.Instance.UpdateLevel(GameManager.Level.Level0);
 
     }
 }

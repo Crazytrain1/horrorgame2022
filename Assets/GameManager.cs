@@ -53,6 +53,10 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+
+        //need to handle if there is no file
+        loadLastSave();
+
     }
     private void Update()
     {
@@ -139,22 +143,22 @@ public class GameManager : MonoBehaviour
         _loaderCanvas.SetActive(false);
     }
 
-    //public void loadLastSave()
-    //{
+    public void loadLastSave()
+    {
 
-    //    lastSave = DataService.LoadData<String>("/lastSave.json", EncryptionEnabled);
-    //}
-    //public void saveLastSave()
-    //{
-    //    if (DataService.SaveData("/lastSave.json", lastSave, EncryptionEnabled))
-    //    {
-    //        Debug.Log("Sheeeeesh");
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("Could not save file!");
-    //    }
-    //}
+        lastSave = DataService.LoadData<String>("/lastSave.json", EncryptionEnabled);
+    }
+    public void saveLastSave()
+    {
+        if (DataService.SaveData("/lastSave.json", lastSave, EncryptionEnabled))
+        {
+            Debug.Log("Sheeeeesh");
+        }
+        else
+        {
+            Debug.Log("Could not save file!");
+        }
+    }
 
     public void loadInventory()
     {
@@ -202,6 +206,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("Could not save file!");
         }
     }
+
+
 
     public enum GameState
     {

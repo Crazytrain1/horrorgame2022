@@ -25,6 +25,8 @@ public class MenuPrincipal : MonoBehaviour
             startButtonText.SetText("New Game");
             loadButtonText.color = Color.red;
             loadButton.interactable = false;
+            GameManager.Instance.lastSave = "saveFile1";
+            GameManager.Instance.saveLastSave();
 
 
         }
