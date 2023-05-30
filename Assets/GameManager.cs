@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     public GameState State;
     public GameState PreviousState;
+    public string lastSave = "";
 
     public static event Action<GameState> StateChanged;
     public static event Action<Level> LevelChanged;
@@ -138,9 +139,26 @@ public class GameManager : MonoBehaviour
         _loaderCanvas.SetActive(false);
     }
 
+    //public void loadLastSave()
+    //{
+
+    //    lastSave = DataService.LoadData<String>("/lastSave.json", EncryptionEnabled);
+    //}
+    //public void saveLastSave()
+    //{
+    //    if (DataService.SaveData("/lastSave.json", lastSave, EncryptionEnabled))
+    //    {
+    //        Debug.Log("Sheeeeesh");
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("Could not save file!");
+    //    }
+    //}
+
     public void loadInventory()
     {
-        inventoryList = DataService.LoadData<List<String[]>>("/inventory.json", EncryptionEnabled);
+        inventoryList = DataService.LoadData<List<String[]>>("/inventory" + lastSave + ".json", EncryptionEnabled);
         for (int i = 0; i < inventoryList.Count; i++)
         {
             if (inventoryList[i].First() == FlashLight.id) 
@@ -167,7 +185,7 @@ public class GameManager : MonoBehaviour
     public void saveInventory()
     {
         
-        
+        inventoryList.Clear();
 
         foreach (var i in InventorySystem.current.inventory)
         {
@@ -175,7 +193,7 @@ public class GameManager : MonoBehaviour
             inventoryList.Add(new string[]{ i.data.id, i.stackSize.ToString() });
            
         }
-        if (DataService.SaveData("/inventory.json", inventoryList, EncryptionEnabled))
+        if (DataService.SaveData("/inventory"+ lastSave + ".json", inventoryList, EncryptionEnabled))
         {
             Debug.Log("Sheeeeesh");
         }
