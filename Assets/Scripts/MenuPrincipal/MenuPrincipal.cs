@@ -48,7 +48,24 @@ public class MenuPrincipal : MonoBehaviour
     }
     public void OnStartButton()
     {
-        GameManager.Instance.UpdateLevel(GameManager.Level.Level0);
+
+        //need to change for new way do detect the existence of a file
+        if (GameManager.Instance.lastSave.Length == 0)
+        {
+            GameManager.Instance.UpdateLevel(GameManager.Level.Level0);
+        }
+        else
+        {
+            bool exist = GameManager.Instance.loadLevelSaved();
+            if (exist)
+            {
+                GameManager.Instance.UpdateLevel(GameManager.Instance.LevelToLoad);
+            }
+            else
+            {
+                GameManager.Instance.UpdateLevel(GameManager.Level.Level0);
+            }
+        }
     }
     public void OnLoadButton()
     {

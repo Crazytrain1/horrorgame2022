@@ -8,4 +8,6 @@ public interface IDataService
 
     T LoadData<T>(string RelativePath, bool Encrypted);
 
+    bool pathExist(string RelativePath);
+
 }

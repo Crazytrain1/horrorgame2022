@@ -88625,6 +88625,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1835626515}
+  Spawns:
+  - {fileID: 1841417309}
 --- !u!1 &1846188159
 GameObject:
   m_ObjectHideFlags: 0
@@ -104496,6 +104498,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.06942597
       objectReference: {fileID: 0}
+    - target: {fileID: 8599864539618366111, guid: cf1f275d54c933e4ebcc14660adae089, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8601569107440962526, guid: cf1f275d54c933e4ebcc14660adae089, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00000068568625
@@ -105267,10 +105273,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loaderCanvas: {fileID: 0}
   _progressBar: {fileID: 0}
-  CurrentLevel: 0
+  FlashLight: {fileID: 0}
+  KeyLevel0: {fileID: 0}
+  LevelToLoad: 0
   NextLevel: 0
   State: 0
   PreviousState: 0
+  lastSave: 
+  levelSpawn: {x: 0, y: 0}
 --- !u!4 &2128031169
 Transform:
   m_ObjectHideFlags: 0

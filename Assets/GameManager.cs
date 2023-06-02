@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
-    public Level CurrentLevel;
+    public Level LevelToLoad;
     public Level NextLevel;
 
     public GameState State;
@@ -33,12 +33,15 @@ public class GameManager : MonoBehaviour
 
     public static event Action<GameState> StateChanged;
     public static event Action<Level> LevelChanged;
+    public static event Action SpawnAction;
 
     private IDataService DataService = new JsonDataService();
     private bool EncryptionEnabled;
 
     private List<String[]> inventoryList = new List<string[]>();
-    string[] objectInfo;
+    public Vector2Int levelSpawn;
+    
+
     private void Awake()
     {
         
@@ -119,6 +122,7 @@ public class GameManager : MonoBehaviour
         }
         //Debug.Log(NextLevel.ToString());
         LevelChanged?.Invoke(newLevel);
+       
     }
 
     private async void LoadScene(string sceneName)
@@ -141,6 +145,8 @@ public class GameManager : MonoBehaviour
         await Task.Delay(1000);
         scene.allowSceneActivation = true;
         _loaderCanvas.SetActive(false);
+        loadLevelSpawn();
+        
     }
 
     public void loadLastSave()
@@ -162,28 +168,92 @@ public class GameManager : MonoBehaviour
 
     public void loadInventory()
     {
-        inventoryList = DataService.LoadData<List<String[]>>("/inventory" + lastSave + ".json", EncryptionEnabled);
-        for (int i = 0; i < inventoryList.Count; i++)
+        if (DataService.pathExist("/inventory" + lastSave + ".json"))
         {
-            if (inventoryList[i].First() == FlashLight.id) 
+            inventoryList = DataService.LoadData<List<String[]>>("/inventory" + lastSave + ".json", EncryptionEnabled);
+            for (int i = 0; i < inventoryList.Count; i++)
             {
-                for (int j = 0; j < Int32.Parse(inventoryList[i].Last()); j++)
+                if (inventoryList[i].First() == FlashLight.id)
                 {
+                    for (int j = 0; j < Int32.Parse(inventoryList[i].Last()); j++)
+                    {
 
-                    InventorySystem.current.Add(FlashLight);
+                        InventorySystem.current.Add(FlashLight);
+                    }
                 }
-            }
-            if (inventoryList[i].First() == KeyLevel0.id)
-            {
-                for (int j = 0; j < Int32.Parse(inventoryList[j].Last()); j++)
+                if (inventoryList[i].First() == KeyLevel0.id)
                 {
-                    InventorySystem.current.Add(KeyLevel0);
+                    for (int j = 0; j < Int32.Parse(inventoryList[j].Last()); j++)
+                    {
+                        InventorySystem.current.Add(KeyLevel0);
+                    }
                 }
+
             }
 
+            InventorySystem.current.InventoryChangedEvent();
         }
+        else
+        {
+            Debug.Log("empty inventory");
+        }
+    }
 
-        InventorySystem.current.InventoryChangedEvent();
+    public void loadLevelSpawn()
+    {
+
+        SpawnAction?.Invoke();
+    }
+
+    public bool loadLevelSaved()
+    {
+        if(DataService.pathExist("/levelSpawn" + lastSave + ".json"))
+        {
+       
+            levelSpawn = DataService.LoadData<Vector2Int>("/levelSpawn" + lastSave + ".json", EncryptionEnabled);
+            if(levelSpawn.x == 0)
+            {
+                LevelToLoad = Level.Level0;
+            }
+            if (levelSpawn.x == 1)
+            {
+                LevelToLoad = Level.Level1;
+            }
+            if (levelSpawn.x == 2)
+            {
+                LevelToLoad = Level.Level2;
+            }
+            if (levelSpawn.x == 3)
+            {
+                LevelToLoad = Level.Level3;
+            }
+            if (levelSpawn.x == 4)
+            {
+                LevelToLoad = Level.Level4;
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void saveLevel(int level, int spawn)
+    {
+       
+        levelSpawn.x = level;
+        levelSpawn.y = spawn;
+
+        //save to file in json format
+        if (DataService.SaveData("/levelSpawn" + lastSave + ".json", levelSpawn, EncryptionEnabled))
+        {
+            Debug.Log("Sheeeeesh");
+        }
+        else
+        {
+            Debug.Log("Could not save file!");
+        }
     }
 
     public void saveInventory()

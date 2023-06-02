@@ -601,6 +601,8 @@ MonoBehaviour:
   NextLevel: 2
   State: 0
   PreviousState: 0
+  lastSave: 
+  levelSpawn: {x: 0, y: 0}
 --- !u!4 &28307731 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 08f5b4b56e889954aaecd27beb0b72bd, type: 3}
@@ -21772,6 +21774,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 604313363}
+  Spawns:
+  - {fileID: 1238815259}
 --- !u!1 &1252071060 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: edadd9a41759f434b972d752532590fe, type: 3}

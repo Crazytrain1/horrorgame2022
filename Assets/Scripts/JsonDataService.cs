@@ -53,7 +53,19 @@ public class JsonDataService : IDataService
         
       
     }
+    public bool pathExist(string RelativePath)
+    {
 
+        string path = Application.persistentDataPath + RelativePath;
+        if (System.IO.File.Exists(path))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     private void WriteEncryptedData<T> (T Data, FileStream Stream)
     {
         using Aes aesProvider = Aes.Create();

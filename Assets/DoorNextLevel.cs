@@ -12,8 +12,8 @@ public class DoorNextLevel : MonoBehaviour
     private InteractDisplay _InteractDisplay;
     private int _DistanceMax = 2;
     private IDataService DataService = new JsonDataService();
-    private string test = "I have commited war crimes in Yougoslavia";
-    private bool EncryptionEnabled;
+   
+    
     
     
     void Start()
@@ -48,6 +48,7 @@ public class DoorNextLevel : MonoBehaviour
         if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax)
         {
             GameManager.Instance.saveInventory();
+            GameManager.Instance.saveLevel( 1,0);
             GameManager.Instance.UpdateLevel(GameManager.Level.Level1);
             _InteractDisplay.UpdateInteractDisplay();
         }
