@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
         scene.allowSceneActivation = true;
         _loaderCanvas.SetActive(false);
         loadLevelSpawn();
+
         
     }
 
@@ -203,6 +204,7 @@ public class GameManager : MonoBehaviour
     {
 
         SpawnAction?.Invoke();
+        
     }
 
     public bool loadLevelSaved()

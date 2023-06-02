@@ -14,6 +14,12 @@ public class MainSpawnerLevel0 : MonoBehaviour
         GameManager.Instance.UpdateGameState(GameState.Playing);
         GameManager.SpawnAction += loadPlayer;
     }
+
+
+    private void Start()
+    {
+        GameManager.Instance.loadLevelSpawn();
+    }
     private void OnDestroy()
     {
         GameManager.SpawnAction -= loadPlayer;
@@ -21,7 +27,9 @@ public class MainSpawnerLevel0 : MonoBehaviour
 
     private void loadPlayer()
     {
+        Debug.Log("player loaded sikeeeeeee");
         Player.transform.position = Spawns[GameManager.Instance.levelSpawn.y].transform.position;
+        GameManager.Instance.loadInventory();
 
     }
 
