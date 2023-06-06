@@ -1,17 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
-
-
-public class Journal : MonoBehaviour
+public class JournalGeneric : MonoBehaviour
 {
-
-    public event Action ClockFall;
-
     [SerializeField] GameObject journal;
     [SerializeField] float TheDistance;
     [SerializeField] GameObject InteractDisplayObject;
@@ -22,9 +15,9 @@ public class Journal : MonoBehaviour
     private bool _open;
     private int _DistanceMax = 2;
     private bool _CanClose = false;
-   
-    
-    
+
+
+
 
 
     public void Start()
@@ -49,7 +42,7 @@ public class Journal : MonoBehaviour
             GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
             journal.SetActive(false);
             _open = false;
-            ClockFall?.Invoke();
+            
         }
     }
     private void OnMouseOver()
@@ -59,7 +52,6 @@ public class Journal : MonoBehaviour
 
             _InteractDisplay.SetInteractDisplay("[E]", null, "Read journal");
             messageText.SetText(displaymessage);
-
 
         }
         else
@@ -73,11 +65,11 @@ public class Journal : MonoBehaviour
 
             journal.SetActive(true);
             _open = true;
-            _CanClose= false;
+            _CanClose = false;
             StartCoroutine("Delay");
-           
+
         }
-      
+
 
 
     }
