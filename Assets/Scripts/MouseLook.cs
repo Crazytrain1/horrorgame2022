@@ -13,6 +13,8 @@ public class MouseLook : MonoBehaviour
     private void Awake()
     {
         GameManager.StateChanged += GameManager_StateChanged;
+
+        GameManager_StateChanged(GameManager.Instance.StartingState);
     }
     private void OnDestroy()
     {
@@ -22,7 +24,9 @@ public class MouseLook : MonoBehaviour
     private void GameManager_StateChanged(GameManager.GameState State)
     {
         _canLook = State == GameManager.GameState.Playing;
-        if (_canLook)
+        Debug.Log(_canLook);
+        Debug.Log(State.ToString());
+        if (_canLook || State == GameManager.GameState.cinematic)
         {
             Cursor.lockState = CursorLockMode.Locked;
         }

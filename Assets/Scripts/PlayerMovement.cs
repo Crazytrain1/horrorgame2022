@@ -71,25 +71,11 @@ public class PlayerMovement : MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
 
             controller.Move(velocity * Time.deltaTime);
-        }
 
-        if (_useFootSteps)
-        {
-            
-            HandleFootStep();
-        }
-        if (Input.GetKeyDown(KeyCode.Escape)&& GameManager.Instance.State != GameManager.GameState.Pausing)
-        {
-            GameManager.Instance.UpdateGameState(GameManager.GameState.Pausing);
-        }
 
-        else if (Input.GetKeyDown(KeyCode.Escape) && GameManager.Instance.State == GameManager.GameState.Pausing)
-        {
-            GameManager.Instance.UpdateGameState( GameManager.Instance.PreviousState);
-        }
 
-        if(Input.GetKeyDown(KeyCode.F) && (InventorySystem.current.Get(referenceItem) != null))
-        {
+            if (Input.GetKeyDown(KeyCode.F) && (InventorySystem.current.Get(referenceItem) != null))
+            {
 
                 if (FlashlightOpen)
                 {
@@ -101,9 +87,27 @@ public class PlayerMovement : MonoBehaviour
                 {
                     _lampSoundClose.Play();
                     SpotLight.SetActive(true);
-                    FlashlightOpen= true;
+                    FlashlightOpen = true;
                 }
+            }
         }
+
+        if (_useFootSteps)
+        {
+            
+            HandleFootStep();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape)&& GameManager.Instance.State != GameManager.GameState.Pausing && GameManager.Instance.State == GameManager.GameState.Playing)
+        {
+            GameManager.Instance.UpdateGameState(GameManager.GameState.Pausing);
+        }
+
+        else if (Input.GetKeyDown(KeyCode.Escape) && GameManager.Instance.State == GameManager.GameState.Pausing)
+        {
+            GameManager.Instance.UpdateGameState( GameManager.Instance.PreviousState);
+        }
+
+        
 
     }
 

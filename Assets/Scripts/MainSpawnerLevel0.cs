@@ -11,7 +11,7 @@ public class MainSpawnerLevel0 : MonoBehaviour
     void Awake()
     {
          
-        GameManager.Instance.UpdateGameState(GameState.Playing);
+        
         GameManager.SpawnAction += loadPlayer;
     }
 

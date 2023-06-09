@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     public GameState State;
     public GameState PreviousState;
+    public GameState StartingState;
     public string lastSave = "";
 
     public static event Action<GameState> StateChanged;
@@ -88,7 +89,7 @@ public class GameManager : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
-        Debug.Log(State.ToString());
+        Debug.Log(State.ToString() + "out of update game state");
         StateChanged?.Invoke(newState);
     }
 
@@ -101,31 +102,34 @@ public class GameManager : MonoBehaviour
         {
             case Level.MainMenu:
                 LoadScene("MenuPrincipal");
+                StartingState = GameState.interacting;
                 break;
             case Level.Level0:               
                 LoadScene("Level_00");
                 //potential lock cursor fix
-                UpdateGameState(GameState.Playing);
+                StartingState = GameState.cinematic;
+                
                 break;
             case Level.Level1:
                 LoadScene("Level_01");
                 //potential lock cursor fix
-                UpdateGameState(GameState.Playing);
+                StartingState = GameState.Playing;
+
                 break;
             case Level.Level2:
                 LoadScene("Level_02");
                 //potential lock cursor fix
-                UpdateGameState(GameState.Playing);
+                StartingState = GameState.Playing;
                 break;
             case Level.Level3:
                 LoadScene("Level_03");
                 //potential lock cursor fix
-                UpdateGameState(GameState.Playing);
+                StartingState = GameState.Playing;
                 break;
             case Level.Level4:
                 LoadScene("Level_04");
                 //potential lock cursor fix
-                UpdateGameState(GameState.Playing);
+                StartingState = GameState.Playing;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newLevel), newLevel, null);
@@ -133,7 +137,7 @@ public class GameManager : MonoBehaviour
         //Debug.Log(NextLevel.ToString());
         LevelChanged?.Invoke(newLevel);
         
-       
+
     }
 
     private async void LoadScene(string sceneName)
@@ -157,7 +161,7 @@ public class GameManager : MonoBehaviour
         scene.allowSceneActivation = true;
         _loaderCanvas.SetActive(false);
         loadLevelSpawn();
-
+        UpdateGameState(StartingState);
         
     }
 
