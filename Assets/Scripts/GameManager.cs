@@ -104,24 +104,35 @@ public class GameManager : MonoBehaviour
                 break;
             case Level.Level0:               
                 LoadScene("Level_00");
+                //potential lock cursor fix
+                UpdateGameState(GameState.Playing);
                 break;
             case Level.Level1:
                 LoadScene("Level_01");
+                //potential lock cursor fix
+                UpdateGameState(GameState.Playing);
                 break;
             case Level.Level2:
                 LoadScene("Level_02");
+                //potential lock cursor fix
+                UpdateGameState(GameState.Playing);
                 break;
             case Level.Level3:
                 LoadScene("Level_03");
+                //potential lock cursor fix
+                UpdateGameState(GameState.Playing);
                 break;
             case Level.Level4:
                 LoadScene("Level_04");
+                //potential lock cursor fix
+                UpdateGameState(GameState.Playing);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newLevel), newLevel, null);
         }
         //Debug.Log(NextLevel.ToString());
         LevelChanged?.Invoke(newLevel);
+        
        
     }
 
