@@ -123,8 +123,10 @@ public class PlayerMovement : MonoBehaviour
                         _footStep.PlayOneShot(woodClips[UnityEngine.Random.Range(0, woodClips.Length-1)]);
                         break;
                     case "Footsteps/CEMENT":
+                        //need to implement  sound!!
                         break;
                     case "Footsteps/CATACOMBS":
+                        //need to implement  sound!!
                         break;
 
                     default:
