@@ -601,6 +601,7 @@ MonoBehaviour:
   NextLevel: 2
   State: 0
   PreviousState: 0
+  StartingState: 0
   lastSave: 
   levelSpawn: {x: 0, y: 0}
 --- !u!4 &28307731 stripped
@@ -1900,6 +1901,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5012233513716945451, guid: 381dfc464cf796f439ce1d4025c340bc, type: 3}
+      propertyPath: objectiveText
+      value: 
+      objectReference: {fileID: 114937529}
     - target: {fileID: 5012233513716945455, guid: 381dfc464cf796f439ce1d4025c340bc, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2064,7 +2069,8 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3770046003055788109, guid: 381dfc464cf796f439ce1d4025c340bc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 381dfc464cf796f439ce1d4025c340bc, type: 3}
 --- !u!114 &114937528 stripped
 MonoBehaviour:
@@ -2075,6 +2081,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114937529 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6364790749416405244, guid: 381dfc464cf796f439ce1d4025c340bc, type: 3}
+  m_PrefabInstance: {fileID: 114937527}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114937530 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5012233513716945451, guid: 381dfc464cf796f439ce1d4025c340bc, type: 3}
+  m_PrefabInstance: {fileID: 114937527}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056599953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cd0eb8b988e73c4692184dabc7c13c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &118487962 stripped
@@ -41452,6 +41480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f737d7b70abd1f148968724f70f640f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Interactdisplay: {fileID: 114937530}
 --- !u!1001 &1666268226
 PrefabInstance:
   m_ObjectHideFlags: 0

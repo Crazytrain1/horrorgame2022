@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class Quote : MonoBehaviour
 {
+    [SerializeField] InteractDisplay Interactdisplay;
+    private void Start()
+    {
+        
+    }
     private void OnDisable()
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        Interactdisplay.UpdateObjective("Explore the office");
     }
 }

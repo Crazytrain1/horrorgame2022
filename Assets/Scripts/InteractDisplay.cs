@@ -11,6 +11,12 @@ public class InteractDisplay : MonoBehaviour
     [SerializeField] GameObject Text;
     [SerializeField] GameObject MenuPause;
     [SerializeField] GameObject MenuDeath;
+    [SerializeField] GameObject Objective;
+    [SerializeField] GameObject FirstObjective;
+    [SerializeField] GameObject TitleObjective;
+
+    [SerializeField] TextMeshProUGUI objectiveText;
+
 
     private TextMeshProUGUI _Text;
     private TextMeshProUGUI _ActionText;
@@ -30,6 +36,9 @@ public class InteractDisplay : MonoBehaviour
     private void GameManager_StateChanged(GameManager.GameState State)
     {
         MenuPause.SetActive(State == GameManager.GameState.Pausing);
+        TitleObjective.SetActive(State == GameManager.GameState.Pausing);
+        FirstObjective.SetActive(State == GameManager.GameState.Pausing);
+        Objective.SetActive(State == GameManager.GameState.Pausing);
         MenuDeath.SetActive(State == GameManager.GameState.death);
     }
 
@@ -72,6 +81,16 @@ public class InteractDisplay : MonoBehaviour
         Text.SetActive(false);
         ActionDisplay.SetActive(false);
         
+    }
+
+    public void UpdateObjective(string text)
+    {
+        if (text != null)
+        {
+            objectiveText.text = text;
+            Objective.SetActive(true);
+            Objective.GetComponent<Animation>().Play("objectiveUpdate");
+        }
     }
 
 }
