@@ -92,5 +92,10 @@ public class InteractDisplay : MonoBehaviour
             Objective.GetComponent<Animation>().Play("objectiveUpdate");
         }
     }
+    public void LoadLastSaveButton()
+    {
+        GameManager.Instance.loadLevelSaved();
+        GameManager.Instance.UpdateLevel(GameManager.Instance.LevelToLoad);
+    }
 
 }

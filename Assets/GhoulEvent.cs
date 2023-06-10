@@ -13,12 +13,12 @@ public class GhoulEvent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && !eventDone)
         {
             // big epic gamer moment ghoul
             Debug.Log("Ghoul Event");
             _Director.Play();
-
+            eventDone = true;
         }
     }
 }
