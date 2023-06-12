@@ -147,10 +147,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TheDistance: 0
   doorframe: {fileID: 4170631313852768929}
-  ActionDisplay: {fileID: 0}
-  ActionText: {fileID: 0}
-  doorOpen: 0
-  target: {fileID: 0}
+  InteractDisplayObject: {fileID: 5012233513716945492, guid: 381dfc464cf796f439ce1d4025c340bc, type: 3}
+  _doorlocked: 0
+  notclockIn: 0
+  _doorOpenSound: {fileID: 0}
+  _doorCloseSound: {fileID: 0}
+  referenceItem: {fileID: 0}
 --- !u!4 &4497889212719007287 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: acd4be682d089444d806ca83400c1277, type: 3}

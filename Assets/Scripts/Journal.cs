@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,8 +15,10 @@ public class Journal : MonoBehaviour
     [SerializeField] GameObject journal;
     [SerializeField] float TheDistance;
     [SerializeField] GameObject InteractDisplayObject;
+    [SerializeField] TextMeshProUGUI messageText;
+    [SerializeField] string displaymessage;
+
     private InteractDisplay _InteractDisplay;
-    private DoorControll _porte;
     private bool _open;
     private int _DistanceMax = 2;
     private bool _CanClose = false;
@@ -31,6 +34,8 @@ public class Journal : MonoBehaviour
             _InteractDisplay = InteractDisplayObject.GetComponent<InteractDisplay>();
             _InteractDisplay.UpdateInteractDisplay();
         }
+        
+
 
     }
     private void Update()
@@ -53,6 +58,7 @@ public class Journal : MonoBehaviour
         {
 
             _InteractDisplay.SetInteractDisplay("[E]", null, "Read journal");
+            messageText.SetText(displaymessage);
 
 
         }

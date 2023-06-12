@@ -6,10 +6,9 @@ public class Punch : MonoBehaviour
 {
 
     [SerializeField] GameObject porte;
+    [SerializeField] GameObject punchReplacement;
     [SerializeField] float TheDistance;
     [SerializeField] GameObject InteractDisplayObject;
-    [SerializeField] Renderer rend;
-    [SerializeField] Shader shader;
     [SerializeField] AudioSource _punchSound;
     private InteractDisplay _InteractDisplay;
     private DoorControll _porte;
@@ -23,9 +22,6 @@ public class Punch : MonoBehaviour
 
         _porte = porte.GetComponent<DoorControll>();
         _CanInteract= true;
-
-        rend = GetComponent<Renderer>();
-        shader = Shader.Find("Universal Render Pipeline/Lit");
 
     }
     private void Update()
@@ -54,7 +50,10 @@ public class Punch : MonoBehaviour
                 _punchSound.Play();
                 _CanInteract= false;
                 _InteractDisplay.UpdateInteractDisplay();
-                rend.material.shader = shader;
+                //probably fixed bug default texture in build
+                punchReplacement.SetActive(true);
+                this.gameObject.SetActive(false);
+               
 
             }
         }

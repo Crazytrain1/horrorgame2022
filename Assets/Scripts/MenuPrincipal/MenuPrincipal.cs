@@ -1,13 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class MenuPrincipal : MonoBehaviour
 {
 
     [SerializeField] enum Level { MainMenu, Level0, Level1, Level2, Level3, Level4 };
     [SerializeField] Level NextLevel;
     [SerializeField] private GameObject options;
+    [SerializeField] private GameObject loadMenu;
+    [SerializeField] TextMeshProUGUI startButtonText;
+    [SerializeField] TextMeshProUGUI loadButtonText;
+    [SerializeField] Button loadButton;
+
+    public void Start()
+    {
+        if (GameManager.Instance.lastSave.Length == 0)
+        {
+            Debug.Log(GameManager.Instance.lastSave);
+            Debug.Log("null");
+            startButtonText.SetText("New Game");
+            loadButtonText.color = Color.red;
+            loadButton.interactable = false;
+            GameManager.Instance.lastSave = "saveFile1";
+            GameManager.Instance.saveLastSave();
+
+
+        }
+        else
+        {
+            Debug.Log(GameManager.Instance.lastSave);
+            startButtonText.text.Equals("Continue");
+            loadButton.interactable = true;
+        }
+    }
     public void OnQuitButton()
     {
         Application.Quit();
@@ -19,6 +48,27 @@ public class MenuPrincipal : MonoBehaviour
     }
     public void OnStartButton()
     {
-        GameManager.Instance.UpdateLevel(GameManager.Level.Level0);
+
+        //need to change for new way do detect the existence of a file
+        if (GameManager.Instance.lastSave.Length == 0)
+        {
+            GameManager.Instance.UpdateLevel(GameManager.Level.Level0);
+        }
+        else
+        {
+            bool exist = GameManager.Instance.loadLevelSaved();
+            if (exist)
+            {
+                GameManager.Instance.UpdateLevel(GameManager.Instance.LevelToLoad);
+            }
+            else
+            {
+                GameManager.Instance.UpdateLevel(GameManager.Level.Level0);
+            }
+        }
+    }
+    public void OnLoadButton()
+    {
+        loadMenu.SetActive(true);
     }
 }

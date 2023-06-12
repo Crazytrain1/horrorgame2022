@@ -23,8 +23,12 @@ public class InventorySystem : MonoBehaviour
         current = this;
         inventory = new List<InventoryItem>();
         m_itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
+        
+
 
     }
+
+
 
     public void Add(InventoryItemData referenceData)
     {

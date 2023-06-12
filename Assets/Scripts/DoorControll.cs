@@ -42,9 +42,14 @@ public class DoorControll : MonoBehaviour
     {
         if(TheDistance <=_DistanceMax && !Interacting )
         {
-
-            _InteractDisplay.SetInteractDisplay("[E]", null, "open door");
-            
+            if (_doorOpen)
+            {
+                _InteractDisplay.SetInteractDisplay("[E]", null, "close door");
+            }
+            else
+            {
+                _InteractDisplay.SetInteractDisplay("[E]", null, "open door");
+            }
             
         }
         else
@@ -57,8 +62,9 @@ public class DoorControll : MonoBehaviour
             if (!_doorlocked)
             {
                 if (!notclockIn) 
-                { 
-                doorframe.GetComponent<Animation>().Play("DoorOpen");
+                {
+                
+                    doorframe.GetComponent<Animation>().Play("DoorOpen");
                 _InteractDisplay.UpdateInteractDisplay();
                 _doorOpenSound.Play();
                 StartCoroutine(DelayOpen());
@@ -77,6 +83,7 @@ public class DoorControll : MonoBehaviour
                 }
                 else
                 {
+                    
                     SetLock(false);
                     InventorySystem.current.Remove(referenceItem);
                 }

@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: _doorCloseSound
       value: 
       objectReference: {fileID: 9163484018227316601}
+    - target: {fileID: 4170631312883900894, guid: b2493b9d420485e44997d4022e86f22b, type: 3}
+      propertyPath: InteractDisplayObject
+      value: 
+      objectReference: {fileID: 5012233513716945492, guid: 381dfc464cf796f439ce1d4025c340bc, type: 3}
     - target: {fileID: 4170631313852768929, guid: b2493b9d420485e44997d4022e86f22b, type: 3}
       propertyPath: m_Name
       value: DoorHinge

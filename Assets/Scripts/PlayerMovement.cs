@@ -65,31 +65,17 @@ public class PlayerMovement : MonoBehaviour
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
-            Vector3 move = transform.right * x + transform.forward * z;
+            Vector3 move = (transform.right * x + transform.forward * z).normalized;
 
             controller.Move(move * speed * Time.deltaTime);
             velocity.y += gravity * Time.deltaTime;
 
             controller.Move(velocity * Time.deltaTime);
-        }
 
-        if (_useFootSteps)
-        {
-            
-            HandleFootStep();
-        }
-        if (Input.GetKeyDown(KeyCode.Escape)&& GameManager.Instance.State != GameManager.GameState.Pausing)
-        {
-            GameManager.Instance.UpdateGameState(GameManager.GameState.Pausing);
-        }
 
-        else if (Input.GetKeyDown(KeyCode.Escape) && GameManager.Instance.State == GameManager.GameState.Pausing)
-        {
-            GameManager.Instance.UpdateGameState( GameManager.Instance.PreviousState);
-        }
 
-        if(Input.GetKeyDown(KeyCode.F) && (InventorySystem.current.Get(referenceItem) != null))
-        {
+            if (Input.GetKeyDown(KeyCode.F) && (InventorySystem.current.Get(referenceItem) != null))
+            {
 
                 if (FlashlightOpen)
                 {
@@ -101,9 +87,27 @@ public class PlayerMovement : MonoBehaviour
                 {
                     _lampSoundClose.Play();
                     SpotLight.SetActive(true);
-                    FlashlightOpen= true;
+                    FlashlightOpen = true;
                 }
+            }
         }
+
+        if (_useFootSteps)
+        {
+            
+            HandleFootStep();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape)&& GameManager.Instance.State != GameManager.GameState.Pausing && GameManager.Instance.State == GameManager.GameState.Playing)
+        {
+            GameManager.Instance.UpdateGameState(GameManager.GameState.Pausing);
+        }
+
+        else if (Input.GetKeyDown(KeyCode.Escape) && GameManager.Instance.State == GameManager.GameState.Pausing)
+        {
+            GameManager.Instance.UpdateGameState( GameManager.Instance.PreviousState);
+        }
+
+        
 
     }
 
@@ -123,8 +127,10 @@ public class PlayerMovement : MonoBehaviour
                         _footStep.PlayOneShot(woodClips[UnityEngine.Random.Range(0, woodClips.Length-1)]);
                         break;
                     case "Footsteps/CEMENT":
+                        //need to implement  sound!!
                         break;
                     case "Footsteps/CATACOMBS":
+                        //need to implement  sound!!
                         break;
 
                     default:
