@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool _useFootSteps = true;
 
     private float footstepTimer = 0;   
-    private bool canMove = true;
+    private bool canMove = false;
     private bool FlashlightOpen = false;
     Vector3 velocity;
     public InventoryItemData referenceItem;
@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
                     FlashlightOpen = true;
                 }
             }
-        }
+        
 
         if (_useFootSteps)
         {
@@ -106,8 +106,8 @@ public class PlayerMovement : MonoBehaviour
         {
             GameManager.Instance.UpdateGameState( GameManager.Instance.PreviousState);
         }
+    }   
 
-        
 
     }
 
