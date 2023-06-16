@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -17,11 +18,15 @@ public class Journal : MonoBehaviour
     [SerializeField] GameObject InteractDisplayObject;
     [SerializeField] TextMeshProUGUI messageText;
     [SerializeField] string displaymessage;
+    [SerializeField] DoorControll door;
+
+    public InventoryItemData referenceItem;
 
     private InteractDisplay _InteractDisplay;
     private bool _open;
     private int _DistanceMax = 2;
     private bool _CanClose = false;
+    private List<string> task = new List<string>();
    
     
     
@@ -50,6 +55,22 @@ public class Journal : MonoBehaviour
             journal.SetActive(false);
             _open = false;
             ClockFall?.Invoke();
+
+            if (InventorySystem.current.Get(referenceItem) == null)
+            {
+                task.Add("get the keys");
+            }
+
+            if (door.notclockIn)
+            {
+                task.Add("clock in");
+            }
+
+            task.Add("leave the office");
+            for (int i = 0; i < task.Count; i++) 
+            {
+                _InteractDisplay.UpdateObjective(task[i], i);
+            }
         }
     }
     private void OnMouseOver()

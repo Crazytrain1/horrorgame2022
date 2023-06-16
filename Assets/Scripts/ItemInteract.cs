@@ -49,6 +49,7 @@ public class ItemInteract : MonoBehaviour
                 realItem.TryGetComponent<ItemObject>(out ItemObject Item);
                 Item.OnPickupItem();
                 _InteractDisplay.UpdateInteractDisplay();
+                
             }
         }
     }

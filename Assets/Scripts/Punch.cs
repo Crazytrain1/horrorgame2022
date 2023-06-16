@@ -50,7 +50,9 @@ public class Punch : MonoBehaviour
                 _punchSound.Play();
                 _CanInteract= false;
                 _InteractDisplay.UpdateInteractDisplay();
-                //probably fixed bug default texture in build
+                _InteractDisplay.RemoveObjective("clock in");
+
+
                 punchReplacement.SetActive(true);
                 this.gameObject.SetActive(false);
                

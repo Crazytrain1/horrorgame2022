@@ -10,7 +10,7 @@ public class DoorControll : MonoBehaviour
     [SerializeField] GameObject doorframe;  
     [SerializeField] GameObject InteractDisplayObject;
     [SerializeField] bool _doorlocked;
-    [SerializeField] bool notclockIn;
+    public bool notclockIn;
     [SerializeField] AudioSource _doorOpenSound;
     [SerializeField] AudioSource _doorCloseSound;
     private bool _doorOpen;
@@ -57,7 +57,7 @@ public class DoorControll : MonoBehaviour
             _InteractDisplay.UpdateInteractDisplay();
 
         }
-        if(Input.GetKeyDown("e")&&TheDistance <= _DistanceMax && !_doorOpen && !Interacting)
+        if(Input.GetKeyDown("e") && TheDistance <= _DistanceMax && !_doorOpen && !Interacting)
         {
             if (!_doorlocked)
             {
