@@ -10,13 +10,14 @@ public class MainSpawnerLevel1 : MonoBehaviour
 
     void Awake()
     {
-        GameManager.Instance.UpdateGameState(GameState.Playing);
+        
         GameManager.SpawnAction += loadPlayer;
     }
 
     private void Start()
     {
         GameManager.Instance.loadLevelSpawn();
+        GameManager.Instance.UpdateGameState(GameState.Playing);
     }
 
     private void OnDestroy()
