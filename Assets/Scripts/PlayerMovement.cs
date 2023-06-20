@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioClip[] woodClips = default;
     [SerializeField] private AudioClip[] catacombsClips = default;
     [SerializeField] private AudioClip[] cementClips = default;
+    [SerializeField] private AudioClip[] metalClips = default;
+
 
 
     [SerializeField] bool _useFootSteps = true;
@@ -136,6 +138,10 @@ public class PlayerMovement : MonoBehaviour
                         break;
                     case "Footsteps/CATACOMBS":
                         //need to implement  sound!!
+                        break;
+                    case "Footsteps/METAL":
+                        //need to implement sound !!
+                        _footStep.PlayOneShot(metalClips[UnityEngine.Random.Range(0, metalClips.Length - 1)]);
                         break;
 
                     default:
