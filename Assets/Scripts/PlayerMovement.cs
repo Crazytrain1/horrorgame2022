@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] AudioSource _lampSoundOpen;
     [SerializeField] AudioSource _lampSoundClose;
-    [SerializeField] AudioSource _footStep = default;
+    [SerializeField] AudioSource _footStep;
     [SerializeField] private AudioClip[] woodClips = default;
     [SerializeField] private AudioClip[] catacombsClips = default;
     [SerializeField] private AudioClip[] cementClips = default;
