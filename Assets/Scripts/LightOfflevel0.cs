@@ -6,6 +6,8 @@ public class LightOfflevel0 : MonoBehaviour
 {
     [SerializeField] eventCollider objectCollider;
     [SerializeField] GameObject InteractDisplayObject;
+    [SerializeField] AudioClip glassBreaking;
+    [SerializeField] AudioSource sound;
     private InteractDisplay _InteractDisplay;
     private void Awake()
     {
@@ -39,5 +41,10 @@ public class LightOfflevel0 : MonoBehaviour
         _InteractDisplay.UpdateInteractDisplay();
 
         yield return null;
+    }
+
+    private void glassBreak()
+    {
+        sound.PlayOneShot(glassBreaking);
     }
 }

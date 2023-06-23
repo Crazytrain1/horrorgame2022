@@ -6,6 +6,8 @@ public class Clock : MonoBehaviour
 {
 
     [SerializeField] Journal journal;
+    [SerializeField] AudioSource sound;
+    [SerializeField] AudioClip breaking;
     void Awake(){
         journal.ClockFall += clockFalling;
     }
@@ -20,5 +22,10 @@ public class Clock : MonoBehaviour
     {
         journal.ClockFall -= clockFalling;
         this.GetComponent<Animation>().Play("clockFalling");
+    }
+
+    void glassBreaking()
+    {
+        sound.PlayOneShot(breaking);
     }
 }

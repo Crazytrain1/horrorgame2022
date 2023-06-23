@@ -16,7 +16,7 @@ public class Checkpoint : MonoBehaviour
             Debug.Log("Checkpoint" + checkpoint + "reached");
             GameManager.Instance.saveInventory();
             GameManager.Instance.saveLevel(level, checkpoint);
-            Destroy(gameObject);
+            
         }
     }
 }
