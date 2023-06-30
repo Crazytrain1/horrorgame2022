@@ -149,6 +149,7 @@ MonoBehaviour:
   distanceToTarget: 0
   ghoulSpeed: 3.5
   _Director: {fileID: 0}
+  animator: {fileID: 3139143661757950146}
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -167,7 +168,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 6c6ef9973918b7c488e9121d58620f29, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
