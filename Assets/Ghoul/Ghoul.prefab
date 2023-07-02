@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1958723891787891465}
   - component: {fileID: 1958723891787891460}
   - component: {fileID: 1958723891787891461}
+  - component: {fileID: 3139143661757950146}
   m_Layer: 0
   m_Name: Ghoul
   m_TagString: Untagged
@@ -148,11 +149,32 @@ MonoBehaviour:
   distanceToTarget: 0
   ghoulSpeed: 3.5
   _Director: {fileID: 0}
+  animator: {fileID: 3139143661757950146}
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!95 &3139143661757950146
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724774004022067331}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 4b129a26a0f615e409ce87bca45b64a0, type: 3}
+  m_Controller: {fileID: 9100000, guid: 6c6ef9973918b7c488e9121d58620f29, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1753891245364271572
 GameObject:
   m_ObjectHideFlags: 0

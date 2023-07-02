@@ -36,6 +36,8 @@ public class IAGhoul : MonoBehaviour
 
     [SerializeField] PlayableDirector _Director;
 
+    [SerializeField] Animator animator;
+
 
     RaycastHit Hit;
 
@@ -68,22 +70,44 @@ public class IAGhoul : MonoBehaviour
             switch (currentState)
             {
                 case State.Roaming:
+                    animator.SetBool("Roaming", true);
+                    animator.SetBool("Chasing", false);
+                    animator.SetBool("LastSeen", false);
+                    
                     Roaming();
                     break;
 
                 case State.Chasing:
+
+                    animator.SetBool("Roaming", false);
+                    animator.SetBool("Chasing", true);
+                    animator.SetBool("LastSeen", false);
                     Chasing();
                     break;
 
                 case State.Searching:
+
+                    animator.SetBool("Roaming", false);
+                    animator.SetBool("Chasing", false);
+                    animator.SetBool("LastSeen", true);
                     Searching();
                     break;
 
                 case State.LastSeen:
+
+                    animator.SetBool("Roaming", false);
+                    animator.SetBool("Chasing", false);
+                    animator.SetBool("LastSeen", true);
+
                     LastSeen();
                     break;
 
                 case State.Kill:
+
+                    animator.SetBool("Roaming", false);
+                    animator.SetBool("Chasing", false);
+                    animator.SetBool("LastSeen", false);
+
                     Kill();
                     break;
 
