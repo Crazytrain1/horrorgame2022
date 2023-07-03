@@ -195,6 +195,7 @@ public class IAGhoul : MonoBehaviour
             currentState = State.Roaming;
         }
     }
+
     private void LastSeen()
     {
         //Move to playerPosition
