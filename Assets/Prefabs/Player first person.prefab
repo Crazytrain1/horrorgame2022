@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 6062977730552210517}
   - component: {fileID: 689044590067885215}
   - component: {fileID: 7309224821867236965}
+  - component: {fileID: 2744299718282008369}
+  - component: {fileID: 2362496894833184355}
   - component: {fileID: 3802138395039212632}
   - component: {fileID: 3802138395039212624}
   - component: {fileID: 4493487227827211182}
@@ -129,7 +131,7 @@ MonoBehaviour:
     m_Bits: 0
   canPush: 0
   strength: 1.1
---- !u!65 &3802138395039212632
+--- !u!65 &2744299718282008369
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,6 +144,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.7131689, z: 0.5692886}
   m_Center: {x: 0, y: 0.9963113, z: 0.11362569}
+--- !u!65 &2362496894833184355
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689044590067885205}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.5692886}
+  m_Center: {x: 0, y: 0.65, z: 0.11362569}
+--- !u!65 &3802138395039212632
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689044590067885205}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 0.5692886}
+  m_Center: {x: 0, y: 0.41, z: 0.11362569}
 --- !u!81 &3802138395039212624
 AudioListener:
   m_ObjectHideFlags: 0
@@ -163,6 +191,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 689044590067885215}
+  hitBoxStanding: {fileID: 2744299718282008369}
+  hitBoxCrouching: {fileID: 2362496894833184355}
+  hitBoxCrawling: {fileID: 3802138395039212632}
+  cameraPlayer: {fileID: 3947552772526891428}
+  flashlight: {fileID: 8599864539618366111}
   speed: 3
   gravity: -9.81
   groundCheck: {fileID: 198500608634912689}
@@ -191,8 +224,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1c9e13dabdc0f614f8fa1bef6ff7c35d, type: 3}
   - {fileID: 8300000, guid: 595d41a9dec067c4999c2bba5c2e9a86, type: 3}
   _useFootSteps: 1
-  referenceItem: {fileID: 11400000, guid: 3ebec0fad601c974b9c6614827967338, type: 2}
   baseStepSpeed: 0.5
+  referenceItem: {fileID: 11400000, guid: 3ebec0fad601c974b9c6614827967338, type: 2}
 --- !u!82 &7945935022416059892
 AudioSource:
   m_ObjectHideFlags: 0

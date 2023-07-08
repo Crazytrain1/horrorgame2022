@@ -5,9 +5,22 @@ using System.Diagnostics;
 using UnityEditor;
 using UnityEngine;
 
+
+enum Stance
+{
+    Standing, crouching, crawling
+}
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] CharacterController controller;
+
+    [SerializeField] BoxCollider hitBoxStanding;
+    [SerializeField] BoxCollider hitBoxCrouching;
+    [SerializeField] BoxCollider hitBoxCrawling;
+
+    [SerializeField] GameObject cameraPlayer;
+    [SerializeField] GameObject flashlight;
+
     [SerializeField] float speed = 2f;
     [SerializeField] float gravity = -9.81f;
     [SerializeField] Transform groundCheck;
@@ -27,18 +40,29 @@ public class PlayerMovement : MonoBehaviour
 
 
     [SerializeField] bool _useFootSteps = true;
+    [SerializeField] private float baseStepSpeed = 0.5f;
 
+
+    
     private float footstepTimer = 0;   
     private bool canMove = false;
     private bool FlashlightOpen = false;
+
+
+    private Vector3 crawling = new Vector3(0, (float)-1.50, 0) ;
+    private Vector3 standing = new Vector3(0, 0, 0);
+    private Vector3 crouching = new Vector3(0, (float)-0.72, 0);
     Vector3 velocity;
     public InventoryItemData referenceItem;
 
-    [SerializeField] private float baseStepSpeed = 0.5f;
+
+    private Stance current;
+    
     
     private void Awake()
     {
         GameManager.StateChanged += GameManager_StateChanged;
+        current = Stance.Standing;
 
     }
 
@@ -64,6 +88,61 @@ public class PlayerMovement : MonoBehaviour
 
         if (canMove)
         {
+
+            switch (current)
+            {
+
+                case Stance.Standing:
+                    Standing();
+                    break;
+                case Stance.crouching:
+                    Crouching();
+                    break;
+                case Stance.crawling:
+                    Crawling();
+                    break;
+                    
+            }
+            UnityEngine.Debug.Log(current);
+
+            if (current == Stance.Standing)
+            {
+                UnityEngine.Debug.Log("Here in standing");
+                if(Input.GetKeyDown(KeyCode.C))
+                {
+                    current = Stance.crouching;
+                }
+                if(Input.GetKeyDown(KeyCode.LeftControl)) {
+                    current = Stance.crawling;
+                }
+
+            }
+
+            else if(current == Stance.crouching)
+            {
+                UnityEngine.Debug.Log("Here in crouching");
+                if (Input.GetKeyDown(KeyCode.C) && CanStand())
+                {
+                    current = Stance.Standing;
+                }
+                if (Input.GetKeyDown(KeyCode.LeftControl))
+                {
+                    current = Stance.crawling;
+                }
+            }
+
+            else if (current == Stance.crawling)
+            {
+                UnityEngine.Debug.Log("Here in crawling");
+                if (Input.GetKeyDown(KeyCode.C))
+                {
+                    current = Stance.crouching;
+                }
+                if (Input.GetKeyDown(KeyCode.LeftControl) && CanStand())
+                {                   
+                        current = Stance.Standing;    
+                }
+            }
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
@@ -118,6 +197,52 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private void Standing()
+    {
+        //camera lerp to new position
+        hitBoxStanding.enabled = true;
+        hitBoxCrawling.enabled = false;
+        hitBoxCrouching.enabled = false;
+
+        controller.height = 1.7F;
+        controller.center = new Vector3(0, 0.93F, 0);
+        StartCoroutine(LerpCamera(cameraPlayer.transform.localPosition, standing));
+        speed = 2f;
+    }
+    private void Crouching()
+    {
+        //camera lerp to new position
+        hitBoxCrouching.enabled = true;
+        hitBoxCrawling.enabled = false;
+        hitBoxStanding.enabled = false;
+
+        controller.center = new Vector3(0, 0.65F, 0);
+        controller.height = 1.0F;
+        StartCoroutine(LerpCamera(cameraPlayer.transform.localPosition,crouching));
+
+        speed = 1.5f;
+    }
+
+    private void Crawling()
+    {
+        //camera lerp to new position
+        hitBoxCrawling.enabled = true;
+        hitBoxCrouching.enabled = false;
+        hitBoxStanding.enabled = false;
+
+        controller.center = new Vector3(0, 0.41F, 0);
+        controller.height = 0.5F;
+        StartCoroutine(LerpCamera(cameraPlayer.transform.localPosition, crawling));
+        speed = 1f;
+
+
+
+    }
+
+    private bool CanStand()
+    {
+        return true;
+    }
     private void HandleFootStep()
     {
         if (!isGrounded ) return;        
@@ -153,5 +278,15 @@ public class PlayerMovement : MonoBehaviour
                 footstepTimer = baseStepSpeed;
             }
         }
+    }
+
+    IEnumerator LerpCamera(Vector3 startingPosition,Vector3 finalPosition)
+    {
+
+     
+            cameraPlayer.transform.localPosition = Vector3.Lerp(startingPosition, finalPosition , Time.deltaTime*2);
+            yield return null;
+
+
     }
 }
