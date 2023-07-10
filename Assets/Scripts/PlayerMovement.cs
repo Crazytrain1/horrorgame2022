@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] GameObject cameraPlayer;
     [SerializeField] GameObject flashlight;
+    [SerializeField] GameObject CanStandObject;
 
     [SerializeField] float speed = 2f;
     [SerializeField] float gravity = -9.81f;
@@ -49,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     private bool FlashlightOpen = false;
 
 
-    private Vector3 crawling = new Vector3(0, (float)-1.50, 0) ;
+    private Vector3 crawling = new Vector3(0, (float)-1.45, 0) ;
     private Vector3 standing = new Vector3(0, 0, 0);
     private Vector3 crouching = new Vector3(0, (float)-0.72, 0);
     Vector3 velocity;
@@ -134,13 +135,13 @@ public class PlayerMovement : MonoBehaviour
             else if (current == Stance.crawling)
             {
                 UnityEngine.Debug.Log("Here in crawling");
-                if (Input.GetKeyDown(KeyCode.C))
+                if (Input.GetKeyDown(KeyCode.C) && CanCrouch())
                 {
                     current = Stance.crouching;
                 }
                 if (Input.GetKeyDown(KeyCode.LeftControl) && CanStand())
                 {                   
-                        current = Stance.Standing;    
+                    current = Stance.Standing;    
                 }
             }
             float x = Input.GetAxis("Horizontal");
@@ -183,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
             
             HandleFootStep();
         }
-        if (Input.GetKeyDown(KeyCode.Escape)&& GameManager.Instance.State != GameManager.GameState.Pausing && GameManager.Instance.State == GameManager.GameState.Playing)
+        if (Input.GetKeyDown(KeyCode.Escape) && GameManager.Instance.State != GameManager.GameState.Pausing && GameManager.Instance.State == GameManager.GameState.Playing)
         {
             GameManager.Instance.UpdateGameState(GameManager.GameState.Pausing);
         }
@@ -206,6 +207,7 @@ public class PlayerMovement : MonoBehaviour
 
         controller.height = 1.7F;
         controller.center = new Vector3(0, 0.93F, 0);
+        controller.radius = 0.46F;
         StartCoroutine(LerpCamera(cameraPlayer.transform.localPosition, standing));
         speed = 2f;
     }
@@ -218,6 +220,7 @@ public class PlayerMovement : MonoBehaviour
 
         controller.center = new Vector3(0, 0.65F, 0);
         controller.height = 1.0F;
+        controller.radius = 0.46F;
         StartCoroutine(LerpCamera(cameraPlayer.transform.localPosition,crouching));
 
         speed = 1.5f;
@@ -230,7 +233,8 @@ public class PlayerMovement : MonoBehaviour
         hitBoxCrouching.enabled = false;
         hitBoxStanding.enabled = false;
 
-        controller.center = new Vector3(0, 0.41F, 0);
+        controller.center = new Vector3(0, 0.32F, 0);
+        controller.radius = 0.20F;
         controller.height = 0.5F;
         StartCoroutine(LerpCamera(cameraPlayer.transform.localPosition, crawling));
         speed = 1f;
@@ -241,7 +245,38 @@ public class PlayerMovement : MonoBehaviour
 
     private bool CanStand()
     {
-        return true;
+        RaycastHit Hit;
+        if (Physics.Raycast(CanStandObject.transform.position, CanStandObject.transform.TransformDirection(Vector3.up), out Hit,  Mathf.Infinity) && Hit.distance < 1.40)
+        {
+
+            UnityEngine.Debug.DrawRay(CanStandObject.transform.position, CanStandObject.transform.TransformDirection(Vector3.up) * Hit.distance, Color.yellow);
+            UnityEngine.Debug.Log(Hit.distance);
+            
+            return false;
+        }
+        else
+        {
+            UnityEngine.Debug.DrawRay(CanStandObject.transform.position, CanStandObject.transform.TransformDirection(Vector3.up) * 1000, Color.white);
+            return true;
+        }
+    }
+
+    private bool CanCrouch()
+    {
+        RaycastHit Hit;
+        if (Physics.Raycast(CanStandObject.transform.position, CanStandObject.transform.TransformDirection(Vector3.up), out Hit, Mathf.Infinity) && Hit.distance < 0.65)
+        {
+
+            UnityEngine.Debug.DrawRay(CanStandObject.transform.position, CanStandObject.transform.TransformDirection(Vector3.up) * Hit.distance, Color.yellow);
+            UnityEngine.Debug.Log(Hit.distance);
+
+            return false;
+        }
+        else
+        {
+            UnityEngine.Debug.DrawRay(CanStandObject.transform.position, CanStandObject.transform.TransformDirection(Vector3.up) * 1000, Color.white);
+            return true;
+        }
     }
     private void HandleFootStep()
     {

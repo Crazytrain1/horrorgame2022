@@ -73,6 +73,7 @@ Transform:
   - {fileID: 5150395394304466377}
   - {fileID: 859691465496189760}
   - {fileID: 198500608634912689}
+  - {fileID: 4087650876546630988}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -168,8 +169,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5, z: 0.5692886}
-  m_Center: {x: 0, y: 0.41, z: 0.11362569}
+  m_Size: {x: 1, y: 0.29, z: 0.5692886}
+  m_Center: {x: 0, y: 0.32, z: 0.11362569}
 --- !u!81 &3802138395039212624
 AudioListener:
   m_ObjectHideFlags: 0
@@ -196,6 +197,7 @@ MonoBehaviour:
   hitBoxCrawling: {fileID: 3802138395039212632}
   cameraPlayer: {fileID: 3947552772526891428}
   flashlight: {fileID: 8599864539618366111}
+  CanStandObject: {fileID: 6439009538137775581}
   speed: 3
   gravity: -9.81
   groundCheck: {fileID: 198500608634912689}
@@ -843,7 +845,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -999,6 +1001,37 @@ Transform:
   - {fileID: 6510415828293912779}
   m_Father: {fileID: 199331338968825391}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6439009538137775581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4087650876546630988}
+  m_Layer: 3
+  m_Name: canSandCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4087650876546630988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6439009538137775581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.41, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 199331338968825391}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7322070605267964985
 GameObject:
