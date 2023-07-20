@@ -12,6 +12,6 @@ public class Quote : MonoBehaviour
     private void OnDisable()
     {
         GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
-        Interactdisplay.UpdateObjective("Explore the office", 0);
+        Interactdisplay.UpdateObjective("I should read the instruction Pierre left me in his office", 0);
     }
 }

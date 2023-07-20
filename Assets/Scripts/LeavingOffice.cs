@@ -11,8 +11,8 @@ public class LeavingOffice : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            _InteractDisplay.RemoveObjective("leave the office");
-            _InteractDisplay.UpdateObjective("Go to the catacombs", 0);
+            _InteractDisplay.RemoveObjective("I need to leave the office");
+            _InteractDisplay.UpdateObjective("I must grab the flashlight before going down", 0);
             Destroy(gameObject);
         }
 

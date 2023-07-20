@@ -50,7 +50,7 @@ public class Punch : MonoBehaviour
                 _punchSound.Play();
                 _CanInteract= false;
                 _InteractDisplay.UpdateInteractDisplay();
-                _InteractDisplay.RemoveObjective("clock in");
+                _InteractDisplay.RemoveObjective("I must clock in");
 
 
                 punchReplacement.SetActive(true);

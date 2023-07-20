@@ -36,7 +36,7 @@ public class LightOfflevel0 : MonoBehaviour
     {
         
         yield return new WaitForSeconds(2);
-        _InteractDisplay.SetInteractDisplay("[F]", "use your flashlight to see in the dark", null);
+        _InteractDisplay.SetInteractDisplay("[F]", "It's pretty dark. I should use my flashlight", null);
         yield return new WaitForSeconds(4);
         _InteractDisplay.UpdateInteractDisplay();
 

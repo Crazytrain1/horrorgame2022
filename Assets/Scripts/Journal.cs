@@ -58,15 +58,15 @@ public class Journal : MonoBehaviour
 
             if (InventorySystem.current.Get(referenceItem) == null)
             {
-                task.Add("get the keys");
+                task.Add("I must find the keys");
             }
 
             if (door.notclockIn)
             {
-                task.Add("clock in");
+                task.Add("I must clock in");
             }
 
-            task.Add("leave the office");
+            task.Add("I need to leave the office");
             for (int i = 0; i < task.Count; i++) 
             {
                 _InteractDisplay.UpdateObjective(task[i], i);
