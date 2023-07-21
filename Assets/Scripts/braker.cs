@@ -51,6 +51,8 @@ public class braker : MonoBehaviour
         }
         if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax && !eventDone)
         {
+            _InteractDisplay.RemoveObjective("I must close the breaker, it's pricey to let the electricity open during the night");
+            _InteractDisplay.UpdateObjective("Now I need to patrol the catacombs",0);
             eventDone = true;
             _Director.Play();
             breakerclosed?.Invoke();
