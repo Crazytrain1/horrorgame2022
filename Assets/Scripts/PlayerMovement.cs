@@ -208,6 +208,7 @@ public class PlayerMovement : MonoBehaviour
         controller.height = 1.7F;
         controller.center = new Vector3(0, 0.93F, 0);
         controller.radius = 0.46F;
+        cameraPlayer.GetComponent<Camera>().nearClipPlane = 0.5F; 
         StartCoroutine(LerpCamera(cameraPlayer.transform.localPosition, standing));
         speed = 2f;
     }
@@ -221,6 +222,7 @@ public class PlayerMovement : MonoBehaviour
         controller.center = new Vector3(0, 0.65F, 0);
         controller.height = 1.0F;
         controller.radius = 0.46F;
+        cameraPlayer.GetComponent<Camera>().nearClipPlane = 0.01F;
         StartCoroutine(LerpCamera(cameraPlayer.transform.localPosition,crouching));
 
         speed = 1.5f;
@@ -236,6 +238,7 @@ public class PlayerMovement : MonoBehaviour
         controller.center = new Vector3(0, 0.32F, 0);
         controller.radius = 0.20F;
         controller.height = 0.5F;
+        cameraPlayer.GetComponent<Camera>().nearClipPlane = 0.01F;
         StartCoroutine(LerpCamera(cameraPlayer.transform.localPosition, crawling));
         speed = 1f;
 
