@@ -8,6 +8,8 @@ public class ItemRotating : MonoBehaviour
 {
 
     private Vector3 posLastFrame;
+   [SerializeField] GameObject cameraView;
+    [SerializeField] ItemViewing realObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,11 @@ public class ItemRotating : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!cameraView.activeInHierarchy) { 
+            realObject.Close();
+            
+            
+        }
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {

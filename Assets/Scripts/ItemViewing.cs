@@ -10,6 +10,7 @@ public class ItemViewing : MonoBehaviour
     [SerializeField] GameObject InteractCamera;
     [SerializeField] float TheDistance;
     [SerializeField] GameObject InteractDisplayObject;
+    [SerializeField] string ObserveMessage;
 
     private InteractDisplay _InteractDisplay;
     private bool _open;
@@ -39,11 +40,7 @@ public class ItemViewing : MonoBehaviour
         {
 
 
-            GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
-            item.SetActive(false);
-            IU.SetActive(false);
-            InteractCamera.SetActive(false);
-            _open = false;
+            Close();
 
         }
     }
@@ -52,7 +49,7 @@ public class ItemViewing : MonoBehaviour
         if (TheDistance <= _DistanceMax)
         {
 
-            _InteractDisplay.SetInteractDisplay("[E]", null, "Read journal");
+            _InteractDisplay.SetInteractDisplay("[E]", null, ObserveMessage);
 
         }
         else
@@ -82,6 +79,15 @@ public class ItemViewing : MonoBehaviour
         yield return new WaitForEndOfFrame();
         _CanClose = true;
     }
+    public void Close() 
+    {
+        GameManager.Instance.UpdateGameState(GameManager.GameState.Playing);
+        item.SetActive(false);
+        IU.SetActive(false);
+        InteractCamera.SetActive(false);
+        _open = false;
+    }
+
 
     void OnMouseExit()
     {
