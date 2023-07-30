@@ -7,14 +7,18 @@ public class DoorNextLevel1 : MonoBehaviour
 
     [SerializeField] float TheDistance;
     [SerializeField] GameObject InteractDisplayObject;
-    [SerializeField] GameObject demoEnd;
-    private int _DistanceMax = 2;
-    private bool _open;
+
+    private InventorySystem.InventoryItem InventoryItem;
     private InteractDisplay _InteractDisplay;
-    // Start is called before the first frame update
+
+    private IDataService DataService = new JsonDataService();
+    private int _DistanceMax = 2;
+
+    public InventoryItemData referenceItem;
+    
+
     void Start()
-    {
-        _open = false;
+    {       
         if (InteractDisplayObject != null)
         {
             _InteractDisplay = InteractDisplayObject.GetComponent<InteractDisplay>();
@@ -22,7 +26,7 @@ public class DoorNextLevel1 : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
 
@@ -45,18 +49,22 @@ public class DoorNextLevel1 : MonoBehaviour
             _InteractDisplay.UpdateInteractDisplay();
 
         }
-        if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax && !_open)
+        if (Input.GetKeyDown("e") && TheDistance <= _DistanceMax)
         {
-            GameManager.Instance.UpdateGameState(GameManager.GameState.interacting);
-
-            demoEnd.SetActive(true);
-            _open = true;
-            
-            
+            if (InventorySystem.current.Get(referenceItem) == null)
+            {
+                _InteractDisplay.SetInteractDisplay("[E]", "you need the key", "open door");
+            }
+            else
+            {
+                InventorySystem.current.Remove(referenceItem);
+                GameManager.Instance.saveInventory();
+                GameManager.Instance.saveLevel(2, 0);
+                GameManager.Instance.UpdateLevel(GameManager.Level.Level2);
+                _InteractDisplay.UpdateInteractDisplay();
+            }
 
         }
-
-
 
     }
 
