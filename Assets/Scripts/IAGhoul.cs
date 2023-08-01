@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Bson;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -32,7 +33,6 @@ public class IAGhoul : MonoBehaviour
 
     [SerializeField] float killRange;
     [SerializeField] float distanceToTarget;
-    [SerializeField] float ghoulSpeed;
 
     [SerializeField] PlayableDirector _Director;
 
@@ -46,15 +46,64 @@ public class IAGhoul : MonoBehaviour
     Vector3 WaypointTarget;
     int waypointIndex;
 
+    private Vector2 Velocity;
+    private Vector2 SmoothDeltaPosition;
+
     void Start()
     {
 
         agent = GetComponent<NavMeshAgent>();
-        agent.speed = ghoulSpeed;
         playerRef = GameObject.FindGameObjectWithTag("Player");
         lastSeenCoroutine = null;
+        animator.applyRootMotion = true;
+        agent.updatePosition = false;
+        agent.updateRotation = true;
         currentState = State.Roaming;
         UpdateDestination();
+    }
+
+    private void OnAnimatorMove()
+    {
+        Vector3 rootPosition = agent.nextPosition;
+        rootPosition.y = agent.nextPosition.y;
+        transform.position = rootPosition;
+        agent.nextPosition = rootPosition;
+    }
+
+    private void SynchronizeAnimatorAndAgent()
+    {
+        Vector3 worldDeltaPosition = agent.nextPosition - transform.position;
+        worldDeltaPosition.y = 0;
+
+        float dx = Vector3.Dot(transform.right, worldDeltaPosition);
+        float dy = Vector3.Dot(transform.forward, worldDeltaPosition);
+        Vector2 deltaPosition = new Vector2(dx, dy);
+
+        float smooth = Mathf.Min(1, Time.deltaTime / 0.1f);
+        SmoothDeltaPosition = Vector2.Lerp(SmoothDeltaPosition, deltaPosition, smooth);
+
+        Velocity = SmoothDeltaPosition / Time.deltaTime;
+        if(agent.remainingDistance <= agent.stoppingDistance)
+        {
+            Velocity = Vector2.Lerp(
+                Vector2.zero,
+                Velocity, 
+                agent.remainingDistance / agent.stoppingDistance
+                );
+        }
+
+        animator.SetFloat("locomotion", Velocity.magnitude);
+        
+
+        float deltaMagnitude = worldDeltaPosition.magnitude;
+        if( deltaMagnitude > agent.radius / 2f )
+        {
+            transform.position = Vector3.Lerp(
+                animator.rootPosition,
+                agent.nextPosition,
+                smooth
+                );
+        }
     }
 
     // Update is called once per frame
@@ -117,6 +166,7 @@ public class IAGhoul : MonoBehaviour
 
             Debug.Log(currentState);
         }
+        SynchronizeAnimatorAndAgent();
     }
 
     void UpdateDestination()
@@ -139,7 +189,7 @@ public class IAGhoul : MonoBehaviour
     private void Roaming()
     {
 
-
+        agent.speed = 3f;
         if (SeePlayer())
         {
 
@@ -150,7 +200,7 @@ public class IAGhoul : MonoBehaviour
 
 
 
-            if (Vector3.Distance(transform.position, WaypointTarget) < 1)
+            if (Vector3.Distance(transform.position, WaypointTarget) < 2)
             {
                 IterateWaypointIndex();
                 UpdateDestination();
@@ -164,6 +214,7 @@ public class IAGhoul : MonoBehaviour
     private void Chasing()
     {
         Debug.Log(SeePlayer());
+        agent.speed = 4f;
         if (SeePlayer())
         {
             giveUp = false;

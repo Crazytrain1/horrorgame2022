@@ -1145,7 +1145,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 6c6ef9973918b7c488e9121d58620f29, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1178,7 +1178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678d14138ca663342ac813b805b1cf1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 7
+  radius: 10
   angle: 62
   playerRef: {fileID: 0}
   targetMask:
@@ -1189,7 +1189,6 @@ MonoBehaviour:
     m_Bits: 256
   killRange: 2
   distanceToTarget: 0
-  ghoulSpeed: 3.5
   _Director: {fileID: 0}
   animator: {fileID: 6958117755607600506}
   waypoints:
@@ -1207,13 +1206,13 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.51
-  m_Speed: 3.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_AngularSpeed: 360
+  m_StoppingDistance: 0.03
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 1.64
   m_BaseOffset: 0
