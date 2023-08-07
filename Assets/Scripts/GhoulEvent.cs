@@ -9,6 +9,7 @@ public class GhoulEvent : MonoBehaviour
     private bool eventDone = false;
 
     [SerializeField] PlayableDirector _Director;
+    [SerializeField] GameObject Ghoul;
 
 
     private void OnTriggerEnter(Collider other)
@@ -18,6 +19,7 @@ public class GhoulEvent : MonoBehaviour
             // big epic gamer moment ghoul
             Debug.Log("Ghoul Event");
             _Director.Play();
+            Ghoul.SetActive(true);
             eventDone = true;
         }
     }
