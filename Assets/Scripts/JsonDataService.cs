@@ -52,6 +52,29 @@ public class JsonDataService : IDataService
         
       
     }
+
+    //need to rewrite this function if we use encryption
+    public bool deleteFile(string RelativePath)
+    {
+        string path = Application.persistentDataPath + RelativePath;
+
+        try
+        {
+            if (System.IO.File.Exists(path))
+            {
+                Debug.Log("Data exists. Deleting old file");
+                System.IO.File.Delete(path);
+                Debug.Log(path);
+                
+            }
+            return true;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Unable to save data due to: {e.Message} {e.StackTrace}");
+            return false;
+        }
+    }
     public bool pathExist(string RelativePath)
     {
 

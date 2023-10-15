@@ -10,4 +10,6 @@ public interface IDataService
 
     bool pathExist(string RelativePath);
 
+    bool deleteFile(string RelativePath);
+
 }

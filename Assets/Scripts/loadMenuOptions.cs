@@ -38,4 +38,16 @@ public class loadMenuOptions : MonoBehaviour
         }
 
     }
+    public void DestroySaveFileInventory(string inventoryFile)
+    {
+        
+        GameManager.Instance.destroyLastSave(inventoryFile);
+        
+    }
+
+    public void DestroySaveFile(string saveFile)
+    {
+        GameManager.Instance.destroyLastSave(saveFile);
+        
+    }
 }

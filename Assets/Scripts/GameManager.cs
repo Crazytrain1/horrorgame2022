@@ -182,6 +182,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void destroyLastSave(string relativePath)
+    {
+        if (DataService.deleteFile(relativePath))
+        {
+            Debug.Log("Sheeeeesh");
+        }
+        else
+        {
+            Debug.Log("Could not delete file!");
+        }        
+    }
+
+
+    //chaque fois qu'on rajoute un item dans le jeu, il doit être rajouté dans le Game Manager.......
     public void loadInventory()
     {
         if (DataService.pathExist("/inventory" + lastSave + ".json"))

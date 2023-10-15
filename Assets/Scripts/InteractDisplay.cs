@@ -79,15 +79,17 @@ public class InteractDisplay : MonoBehaviour
 
     public void UpdateInteractDisplay() 
     {
-        ActionText.SetActive(false);
-        Text.SetActive(false);
-        ActionDisplay.SetActive(false);
-        
+        if (ActionText != null && Text != null && ActionDisplay != null)
+        {
+            ActionText.SetActive(false);
+            Text.SetActive(false);
+            ActionDisplay.SetActive(false);
+        }
     }
 
     public void UpdateObjective(string text, int number)
     {
-        if (text != null)
+        if (text != null && ObjectiveList[number] != null)
         {
             objectiveText = ObjectiveList[number].GetComponent<TextMeshProUGUI>();
             objectiveText.text= text;
@@ -98,24 +100,29 @@ public class InteractDisplay : MonoBehaviour
 
     public void RemoveObjective(string text)
     {
-        bool reached = false;
-        for(int i = 0; i < ObjectiveList.Count; i++)
+        if (ObjectiveList != null)
         {
-            //if reached, swap the text for the one below
-            if (reached)
+            bool reached = false;
+            for (int i = 0; i < ObjectiveList.Count; i++)
             {
-                string textSwap = ObjectiveList[i].GetComponent<TextMeshProUGUI>().text;
-                ObjectiveList[i-1].GetComponent<TextMeshProUGUI>().text = textSwap;
-                ObjectiveList[i].GetComponent<TextMeshProUGUI>().text = null;
+                if (ObjectiveList[i] != null)
+                {
+                    //if reached, swap the text for the one below
+                    if (reached)
+                    {
+                        string textSwap = ObjectiveList[i].GetComponent<TextMeshProUGUI>().text;
+                        ObjectiveList[i - 1].GetComponent<TextMeshProUGUI>().text = textSwap;
+                        ObjectiveList[i].GetComponent<TextMeshProUGUI>().text = null;
+                    }
+                    if (ObjectiveList[i].GetComponent<TextMeshProUGUI>().text == text)
+                    {
+                        ObjectiveList[i].GetComponent<TextMeshProUGUI>().text = null;
+                        reached = true;
+                    }
+                    Objective.SetActive(true);
+                    Objective.GetComponent<Animation>().Play("objectiveUpdate");
+                }
             }
-            if (ObjectiveList[i].GetComponent<TextMeshProUGUI>().text == text)
-            {
-                ObjectiveList[i].GetComponent<TextMeshProUGUI>().text = null;
-                reached = true;
-            }
-            Objective.SetActive(true);
-            Objective.GetComponent<Animation>().Play("objectiveUpdate");
-
         }
     }
     public void LoadLastSaveButton()
