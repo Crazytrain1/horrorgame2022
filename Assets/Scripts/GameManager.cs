@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
-        Debug.Log(State.ToString() + "out of update game state");
+        
         StateChanged?.Invoke(newState);
     }
 
@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException(nameof(newLevel), newLevel, null);
         }
-        //Debug.Log(NextLevel.ToString());
+        
         LevelChanged?.Invoke(newLevel);
         
 
@@ -148,12 +148,9 @@ public class GameManager : MonoBehaviour
         _loaderCanvas.SetActive(true);
         do
         {
+            //DELETE THIS LINE BEFORE RELEASE!!!
             await Task.Delay(100);
             _target = scene.progress;
-            Debug.Log("target");
-            Debug.Log(_target);
-            Debug.Log("progress bar");
-            Debug.Log(_progressBar);
         }
         while (scene.progress < 0.9f);
         _target = 1;

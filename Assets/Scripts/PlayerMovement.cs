@@ -104,11 +104,10 @@ public class PlayerMovement : MonoBehaviour
                     break;
                     
             }
-            UnityEngine.Debug.Log(current);
 
             if (current == Stance.Standing)
             {
-                UnityEngine.Debug.Log("Here in standing");
+                
                 if(Input.GetKeyDown(KeyCode.C))
                 {
                     current = Stance.crouching;
@@ -121,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
 
             else if(current == Stance.crouching)
             {
-                UnityEngine.Debug.Log("Here in crouching");
+                
                 if (Input.GetKeyDown(KeyCode.C) && CanStand())
                 {
                     current = Stance.Standing;
@@ -134,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
 
             else if (current == Stance.crawling)
             {
-                UnityEngine.Debug.Log("Here in crawling");
+                
                 if (Input.GetKeyDown(KeyCode.C) && CanCrouch())
                 {
                     current = Stance.crouching;
@@ -253,7 +252,7 @@ public class PlayerMovement : MonoBehaviour
         {
 
             UnityEngine.Debug.DrawRay(CanStandObject.transform.position, CanStandObject.transform.TransformDirection(Vector3.up) * Hit.distance, Color.yellow);
-            UnityEngine.Debug.Log(Hit.distance);
+            
             
             return false;
         }
@@ -271,7 +270,6 @@ public class PlayerMovement : MonoBehaviour
         {
 
             UnityEngine.Debug.DrawRay(CanStandObject.transform.position, CanStandObject.transform.TransformDirection(Vector3.up) * Hit.distance, Color.yellow);
-            UnityEngine.Debug.Log(Hit.distance);
 
             return false;
         }

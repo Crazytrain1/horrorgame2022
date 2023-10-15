@@ -29,7 +29,7 @@ public class MainSpawnerLevel1 : MonoBehaviour
     private void loadPlayer()
     {
 
-        Debug.Log("player loaded sikeeeeeee");
+        
         Player.transform.position = Spawns[GameManager.Instance.levelSpawn.y].transform.position;
         Player.transform.rotation = Spawns[GameManager.Instance.levelSpawn.y].transform.rotation;
         GameManager.Instance.loadInventory();
