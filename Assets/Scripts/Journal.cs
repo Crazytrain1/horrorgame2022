@@ -26,6 +26,7 @@ public class Journal : MonoBehaviour
     private bool _open;
     private int _DistanceMax = 2;
     private bool _CanClose = false;
+    private bool _firstTime = true;
     private List<string> task = new List<string>();
    
     
@@ -67,9 +68,13 @@ public class Journal : MonoBehaviour
             }
 
             task.Add("I need to leave the office");
-            for (int i = 0; i < task.Count; i++) 
+            if (_firstTime)
             {
-                _InteractDisplay.UpdateObjective(task[i], i);
+                for (int i = 0; i < task.Count; i++)
+                {
+                    _InteractDisplay.UpdateObjective(task[i], i);
+                    _firstTime = false;
+                }
             }
         }
     }

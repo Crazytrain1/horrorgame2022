@@ -8,6 +8,7 @@ public class Clock : MonoBehaviour
     [SerializeField] Journal journal;
     [SerializeField] AudioSource sound;
     [SerializeField] AudioClip breaking;
+    [SerializeField] GameObject ground;
     void Awake(){
         journal.ClockFall += clockFalling;
     }
@@ -21,9 +22,16 @@ public class Clock : MonoBehaviour
     void clockFalling()
     {
         journal.ClockFall -= clockFalling;
-        this.GetComponent<Animation>().Play("clockFalling");
+        this.gameObject.GetComponent<Rigidbody>().useGravity = true;
+        
     }
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject == ground) 
+        {
+            this.GetComponent<Animation>().Play("clockFalling");
+        }
+    }
     void glassBreaking()
     {
         sound.PlayOneShot(breaking);
