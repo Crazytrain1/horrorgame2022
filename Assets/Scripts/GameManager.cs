@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     public static event Action<GameState> StateChanged;
     public static event Action<Level> LevelChanged;
     public static event Action SpawnAction;
+    public static event Action<float, float> screenShake;
 
     private IDataService DataService = new JsonDataService();
     private bool EncryptionEnabled;
@@ -303,6 +304,11 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Could not save file!");
         }
+    }
+
+    public void Shake(float duration, float magnitude)
+    {
+        screenShake?.Invoke(0.15f,0.4f);
     }
 
 
