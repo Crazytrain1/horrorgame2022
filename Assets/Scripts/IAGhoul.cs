@@ -189,7 +189,7 @@ public class IAGhoul : MonoBehaviour
     private void Roaming()
     {
 
-        agent.speed = 3f;
+        agent.speed = 2f;
         if (SeePlayer())
         {
 
@@ -214,7 +214,7 @@ public class IAGhoul : MonoBehaviour
     private void Chasing()
     {
         Debug.Log(SeePlayer());
-        agent.speed = 4f;
+        agent.speed = 2.5f;
         if (SeePlayer())
         {
             giveUp = false;

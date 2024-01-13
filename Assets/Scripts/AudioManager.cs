@@ -25,6 +25,8 @@ public class AudioManager : MonoBehaviour
         LoadVolume();
     }
 
+
+
     void LoadVolume()
     {
         float masterVolume = PlayerPrefs.GetFloat(MASTER_KEY, 1f);
