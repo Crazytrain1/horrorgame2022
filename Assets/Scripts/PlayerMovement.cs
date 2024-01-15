@@ -165,13 +165,13 @@ public class PlayerMovement : MonoBehaviour
 
                 if (FlashlightOpen)
                 {
-                    _lampSoundOpen.Play();
+                    _lampSoundClose.Play();
                     SpotLight.SetActive(false);
                     FlashlightOpen = false;
                 }
                 else
                 {
-                    _lampSoundClose.Play();
+                    _lampSoundOpen.Play();
                     SpotLight.SetActive(true);
                     FlashlightOpen = true;
                 }
@@ -300,8 +300,7 @@ public class PlayerMovement : MonoBehaviour
                     case "Footsteps/CATACOMBS":
                         _footStep.PlayOneShot(catacombsClips[UnityEngine.Random.Range(0, catacombsClips.Length - 1)]);
                         break;
-                    case "Footsteps/METAL":
-                        //need to implement sound !!
+                    case "Footsteps/METAL":                       
                         _footStep.PlayOneShot(metalClips[UnityEngine.Random.Range(0, metalClips.Length - 1)]);
                         break;
 
