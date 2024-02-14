@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
-#endif
+
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
@@ -9,9 +8,9 @@ using UnityEngine.InputSystem;
 namespace StarterAssets
 {
     [RequireComponent(typeof(CharacterController))]
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+
     [RequireComponent(typeof(PlayerInput))]
-#endif
+
     public class ThirdPersonController : MonoBehaviour
     {
         [Header("Player")]
@@ -111,9 +110,9 @@ namespace StarterAssets
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
 
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+
         public PlayerInput _playerInput;
-#endif
+
         private Animator _animator;
         private CharacterController _controller;
         public StarterAssetsInputs _input;
@@ -127,11 +126,10 @@ namespace StarterAssets
         {
             get
             {
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+
                 return _playerInput.currentControlScheme == "KeyboardMouse";
-#else
-				return false;
-#endif
+
+
             }
         }
 
