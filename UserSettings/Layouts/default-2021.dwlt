@@ -19,9 +19,9 @@ MonoBehaviour:
     width: 2560
     height: 1357
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Scene
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 421}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 2560
     height: 1357
-  m_MinSize: {x: 875, y: 421}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
   m_TopViewHeight: 30
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 197
+  controlID: 127
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 198
+  controlID: 128
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 53
+  controlID: 50
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 54
+  controlID: 51
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -2868,7 +2868,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 2a98feff8698feff6e9ffeff36a3feff38a8feffc0acfeff66b0feff0ab4feffb0b7feff68bbfeff20bffeffc4c2feff6ac6feff0ecafeff1cd3feff34dcfeff32e5feffd6e8feff7cecfeff20f0feffd6f3feff74f7feff14fbfeffb2fefeff5202fffff005ffff9009ffff400dffffca10ffffdc1afffff023ffff1632ffffd437ffff4a3cffff1a46ffff004affffd453ffffc25cffff0262ffffd865ffff7c6cffff7c73ffff5a78ffff4685ffff9289ffff308dffffd090ffff6e94ffff0e98ffffac9bffff709fffff32a4ffffa0aaffffe8b3ffff48baffff40c3ffff38c7ffff7cd1ffff82d4ffff9ad9ffff4eddffff5ce3ffff02e7ffff74ecffffc6f5ffff12fbffff04820000aacb0000
+      m_ExpandedIDs: 12fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -3855,9 +3855,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 9.123957, y: 17.2791, z: 8.366653}
+    m_Target: {x: 54.326927, y: 7.7763233, z: 33.023422}
     speed: 2
-    m_Value: {x: 9.124197, y: 17.279099, z: 8.367175}
+    m_Value: {x: 54.326927, y: 7.7763233, z: 33.023422}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -3904,9 +3904,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.34771603, y: 0.39031062, z: -0.16233464, w: 0.8367552}
+    m_Target: {x: 0.14855802, y: -0.27775636, z: 0.043342736, w: 0.9479697}
     speed: 2
-    m_Value: {x: 0.34901267, y: 0.39011347, z: -0.16293919, w: 0.83633274}
+    m_Value: {x: 0.14851192, y: -0.27921385, z: 0.04357112, w: 0.9476737}
   m_Size:
     m_Target: 3.570569
     speed: 2
@@ -3976,22 +3976,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/StarterAssets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 85
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/StarterAssets
   m_LastFoldersGridSize: 85
   m_LastProjectPath: F:\horrorgame2022\horrorgame2022
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: a67b0000
-    m_LastClickedID: 31654
-    m_ExpandedIDs: 00000000487900004a7900004c7900004e79000050790000527900005479000056790000587900005a7900005c7900005e79000060790000627900006479000066790000687900006a7900006c79000000ca9a3b
+    m_SelectedIDs: e8780000
+    m_LastClickedID: 30952
+    m_ExpandedIDs: 0000000090760000927600009476000096760000987600009a7600009c7600009e760000a0760000a2760000a4760000a6760000a8760000aa760000ac760000ae760000b0760000b2760000b476000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -4019,7 +4019,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000487900004a7900004c7900004e79000050790000527900005479000056790000587900005a7900005c7900005e79000060790000627900006479000066790000687900006a7900006c790000
+    m_ExpandedIDs: 0000000090760000927600009476000096760000987600009a7600009c7600009e760000a0760000a2760000a4760000a6760000a8760000aa760000ac760000ae760000b0760000b2760000b4760000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
