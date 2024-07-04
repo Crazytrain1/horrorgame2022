@@ -20,6 +20,8 @@ public class Pencil : MonoBehaviour
     int hourIndex;
     [SerializeField] int rightPosition;
     public bool correct = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,7 +76,7 @@ public class Pencil : MonoBehaviour
         {
             rotating = true;
            
-            targetRotation = Quaternion.Euler(currentHour[hourIndex], 0f, 0f);
+            targetRotation = Quaternion.Euler(0f, 0f, -currentHour[hourIndex]);
             hourIndex++;
             if (hourIndex >= currentHour.Count)
             {

@@ -5,20 +5,29 @@ using UnityEngine;
 public class Puzzle1 : MonoBehaviour
 {
     [SerializeField] List<GameObject> Child;
-    // Update is called once per frame
+    [SerializeField] GameObject item;
+
+    bool notSolved = true;
+
     void Update()
     {
-        for(int i = 0; i < Child.Count; i++)
-        {
-            if (!Child[i].GetComponent<Pencil>().correct)
-            {
-                break;
-            }
-            else if (i== Child.Count - 1)
-            {
-                Debug.Log("Puzzle solve baby!!");
-            }
 
+        if (notSolved)
+        {
+            for (int i = 0; i < Child.Count; i++)
+            {
+                if (!Child[i].GetComponent<Pencil>().correct)
+                {
+                    break;
+                }
+                else if (i == Child.Count - 1)
+                {
+                    item.SetActive(true);
+                    notSolved= false;
+                    break;
+                }
+
+            }
         }
     }
 }
